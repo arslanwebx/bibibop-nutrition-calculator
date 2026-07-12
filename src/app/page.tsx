@@ -4,6 +4,7 @@ import { nutritionItems } from "@/data/bibibop-nutrition";
 import { calculateNutrition } from "@/lib/calculate-nutrition";
 import { siteConfig } from "@/config/site";
 import Link from "next/link";
+import AuthorBox from "@/components/content/AuthorBox";
 
 const faqs=[
   ["How accurate is the BIBIBOP Nutrition Calculator?","It totals the values in BIBIBOP's downloadable nutrition sheet. The arithmetic is consistent with that source, but hand portions, substitutions, recipe changes, and location practices can make an actual meal different."],
@@ -44,5 +45,5 @@ export default function Home(){const jsonLd=[{"@context":"https://schema.org","@
     <h2>Data Accuracy And Official Source Differences</h2><p>The official webpage and downloadable nutrition sheet disagree for several ingredients. For example, the webpage shows 350 calories for Purple Rice while the downloadable sheet lists 170 for its five-ounce base portion. Mixing the two sources would create an inconsistent calculator.</p><p>The calculator therefore uses the complete downloadable sheet for every nutrient total. The <a href={siteConfig.source.pageUrl}>official BIBIBOP nutrition webpage</a> is linked for additional context only.</p><p>Suppliers, recipes, availability, substitutions, and hand preparation can change actual totals. If you notice a possible error, use the <Link href="/contact/">contact page</Link> and include the ingredient, value, and source you reviewed.</p>
     <section className="faq-section"><h2 id="frequently-asked-questions">Frequently Asked Questions</h2><div className="faq">{faqs.map(([q,a])=><details key={q}><summary>{q}</summary><p>{a}</p></details>)}</div></section>
     <h2>A Practical Final Check</h2><p>The BIBIBOP nutrition calculator is best used as a transparent comparison tool. Build the order you expect, look beyond calories to protein, carbs, fat, sodium, and allergen flags, and note whether the status is Exact, Estimated, or Incomplete.</p><p>Save or print a summary when comparing two combinations. Include the itemized list so each calorie or macro difference can be traced to a specific ingredient and portion multiplier. If an allergy, medical condition, or precise intake target affects your decision, verify current restaurant information and seek qualified guidance where appropriate.</p>
-  </article></section>
+  </article><div className="shell homepage-author"><AuthorBox/></div></section>
   </>}

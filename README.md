@@ -76,7 +76,7 @@ The verifier prints total rows, category counts, duplicate status, missing-field
 
 ### Blog posts
 
-Create a real route below `src/app/blog/` only after an original, source-checked article is ready. Add crawlable archive entries, change the blog metadata from `noindex, follow` to indexable, and add `/blog/` to `publicRoutes` in `src/config/site.ts` so it enters `sitemap.xml`. Do not remove noindex for an empty archive.
+Create a real route below `src/app/blog/` only after an original, source-checked article is ready. Wrap the article in `src/components/content/BlogPostTemplate.tsx`; it automatically links M. Arsalan, adds the reusable author box, and emits Article author schema. Add the published summary to `src/data/blog-posts.ts`, add crawlable archive entries, change the blog metadata from `noindex, follow` to indexable, and add `/blog/` to `publicRoutes` in `src/config/site.ts` so it enters `sitemap.xml`. Do not remove noindex for an empty archive.
 
 ### Additional calculators
 

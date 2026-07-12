@@ -20,7 +20,7 @@ export const publicRoutes = [
   "/", "/about/", "/contact/", "/editorial-policy/",
   "/corrections-policy/", "/privacy-policy/", "/cookie-policy/", "/terms/",
   "/medical-disclaimer/", "/trademark-disclaimer/", "/advertising-disclosure/",
-  "/accessibility/", "/sitemap/",
+  "/accessibility/", "/author/m-arslan/", "/sitemap/",
 ] as const;
 
 export const allHumanRoutes = [...publicRoutes, "/blog/", "/nutrition-calculators/"] as const;
