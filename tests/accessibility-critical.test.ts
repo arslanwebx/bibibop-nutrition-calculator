@@ -1,0 +1,2 @@
+import React from "react";import {render,screen} from "@testing-library/react";import {describe,expect,it} from "vitest";import Calculator from "@/components/calculator/Calculator";
+describe("critical calculator accessibility",()=>{it("labels core controls and empty results",()=>{render(React.createElement(Calculator));expect(screen.getByRole("group",{name:"Bowl size"})).toBeInTheDocument();expect(screen.getByRole("radio",{name:"Original Bowl"})).toBeChecked();expect(screen.getByLabelText("Nutrition results")).toHaveTextContent("Add an ingredient to begin")})});

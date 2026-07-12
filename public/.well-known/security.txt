@@ -1,0 +1,5 @@
+Contact: mailto:contact@bibibopnutritioncalculator.pro
+Canonical: https://bibibopnutritioncalculator.pro/.well-known/security.txt
+Preferred-Languages: en
+Policy: https://bibibopnutritioncalculator.pro/terms/
+Expires: 2027-07-12T00:00:00.000Z

@@ -1,0 +1,4 @@
+import Link from "next/link";
+import { siteConfig } from "@/config/site";
+
+export default function PageShell({title,description,children}:{title:string;description:string;children:React.ReactNode}){const crumbs={"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:[{"@type":"ListItem",position:1,name:"Home",item:siteConfig.url},{"@type":"ListItem",position:2,name:title}]};return <><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(crumbs)}}/><div className="content-page"><article className="shell article-card"><nav className="breadcrumbs" aria-label="Breadcrumb"><Link href="/">Home</Link> / <span aria-current="page">{title}</span></nav><p className="eyebrow">Independent information</p><h1>{title}</h1><p className="lede">{description}</p>{children}</article></div></>}
