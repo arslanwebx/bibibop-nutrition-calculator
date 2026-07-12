@@ -17,10 +17,15 @@ export const siteConfig = {
 } as const;
 
 export const publicRoutes = [
-  "/", "/about/", "/contact/", "/editorial-policy/",
+  "/", "/nutrition-calculators/", "/nutrition-calculators/calorie-calculator/",
+  "/nutrition-calculators/macro-calculator/", "/nutrition-calculators/protein-calculator/",
+  "/nutrition-calculators/carb-calculator/", "/nutrition-calculators/fat-intake-calculator/",
+  "/nutrition-calculators/tdee-calculator/", "/nutrition-calculators/bmr-calculator/",
+  "/nutrition-calculators/bmi-calculator/", "/nutrition-calculators/calorie-deficit-calculator/",
+  "/about/", "/contact/", "/editorial-policy/",
   "/corrections-policy/", "/privacy-policy/", "/cookie-policy/", "/terms/",
   "/medical-disclaimer/", "/trademark-disclaimer/", "/advertising-disclosure/",
   "/accessibility/", "/author/m-arslan/", "/sitemap/",
 ] as const;
 
-export const allHumanRoutes = [...publicRoutes, "/blog/", "/nutrition-calculators/"] as const;
+export const allHumanRoutes = [...publicRoutes, "/blog/"] as const;

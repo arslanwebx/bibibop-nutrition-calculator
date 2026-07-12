@@ -83,6 +83,21 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
 .nav a:hover { background: var(--surface); color: var(--orange-dark); }
 .nav .nav-cta { margin-left: 5px; background: var(--orange); color: white; padding-inline: 18px; }
 .nav .nav-cta:hover { background: var(--orange-dark); color: white; }
+.nav-dropdown { position: relative; }
+.nav-dropdown summary {
+  min-height: 44px; display: flex; align-items: center; gap: 6px; padding: 10px 13px;
+  border-radius: 10px; color: var(--ink); font-size: .9rem; font-weight: 600; cursor: pointer; list-style: none;
+}
+.nav-dropdown summary::-webkit-details-marker { display: none; }
+.nav-dropdown summary:hover, .nav-dropdown[open] summary { background: var(--surface); color: var(--orange-dark); }
+.nav-dropdown summary span { transition: transform .2s ease; }
+.nav-dropdown[open] summary span { transform: rotate(180deg); }
+.nav-dropdown-menu {
+  position: absolute; top: calc(100% + 9px); left: 50%; z-index: 50; width: 300px; padding: 10px;
+  border: 1px solid var(--border); border-radius: 14px; background: white; box-shadow: var(--shadow-md); transform: translateX(-50%);
+}
+.nav .nav-dropdown-menu a { display: block; padding: 9px 11px; font-size: .78rem; line-height: 1.35; }
+.nav .nav-dropdown-menu a strong { color: var(--orange-dark); }
 .menu-button {
   display: none; min-height: 44px; padding: 0 14px; border: 1px solid var(--border);
   border-radius: 10px; background: white; color: var(--ink); font-weight: 650; cursor: pointer;
@@ -317,6 +332,43 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
 .empty-state { padding: 42px 20px; text-align: center; }
 .empty-state svg { width: min(260px, 80%); height: auto; margin-inline: auto; }
 
+/* Supporting Health Calculators */
+.page-content:has(.health-calculator), .page-content:has(.calculator-directory) { max-width: 860px; }
+.calculator-answer { margin: 0 0 24px; padding: 16px 18px; border-left: 4px solid var(--orange); border-radius: 0 12px 12px 0; background: var(--orange-soft); }
+.health-calculator { display: grid; grid-template-columns: minmax(0,1fr) 315px; gap: 18px; align-items: start; margin: 28px 0 16px; }
+.health-form, .health-results { padding: 22px; border: 1px solid var(--border); border-radius: 18px; background: white; box-shadow: var(--shadow-sm); }
+.health-results { position: sticky; top: 98px; border-top: 4px solid var(--orange); }
+.unit-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin: 0 0 18px; padding: 0; border: 0; }
+.unit-toggle legend { grid-column: 1/-1; width: 100%; margin-bottom: 5px; color: var(--ink); font-weight: 750; text-align: left; }
+.unit-toggle label { display: flex; align-items: center; justify-content: center; gap: 7px; min-height: 46px; border: 1px solid var(--border); border-radius: 10px; color: var(--ink); cursor: pointer; }
+.unit-toggle label:has(input:checked) { border-color: var(--orange); background: var(--orange-soft); color: #9a3412; font-weight: 650; }
+.unit-toggle input { accent-color: var(--orange); }
+.health-field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.health-field, .health-field-grid label { display: block; margin-bottom: 15px; color: var(--ink); font-size: .84rem; font-weight: 700; }
+.health-field input, .health-field select, .health-field-grid input, .health-field-grid select { width: 100%; min-height: 48px; margin-top: 6px; padding: .65rem .8rem; border: 1px solid #d1d5db; border-radius: 10px; background: white; color: var(--ink); }
+.health-form-note { margin: 5px 0 0; color: var(--muted); font-size: .75rem; }
+.health-result-list { display: grid; gap: 9px; margin-top: 16px; }
+.health-result { padding: 12px; border-radius: 11px; background: var(--surface); text-align: center; }
+.health-result span, .health-result strong { display: block; }
+.health-result span { color: var(--muted); font-size: .7rem; }
+.health-result strong { margin-top: 3px; color: var(--ink); font-size: .96rem; }
+.health-result.primary { background: var(--orange-soft); }
+.health-result.primary strong { color: var(--orange-dark); font-size: 1.35rem; }
+.health-caution { margin: 15px 0 0; padding: 11px; border: 1px solid #fde68a; border-radius: 10px; background: var(--amber-soft); font-size: .72rem; line-height: 1.55; }
+.health-low-warning { margin: 14px 0 0; padding: 11px; border: 1px solid #fecaca; border-radius: 10px; background: #fef2f2; color: #991b1b; font-size: .72rem; line-height: 1.55; }
+.calculator-review { color: var(--muted); font-size: .75rem; text-align: center; }
+.calculator-article h2, .tool-faq h2, .related-tools h2, .directory-guidance h2 { margin-top: 54px; }
+.calculator-article p { margin-bottom: 1rem; }
+.tool-faq details { margin-bottom: 10px; border: 1px solid var(--border); border-radius: 11px; background: white; }
+.tool-faq summary { padding: 14px 16px; color: var(--ink); font-weight: 700; cursor: pointer; }
+.tool-faq details p { margin: 0; padding: 0 16px 15px; }
+.related-tool-grid, .calculator-directory { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+.related-tool-grid a, .calculator-directory a { display: flex; flex-direction: column; gap: 6px; padding: 17px; border: 1px solid var(--border); border-radius: 13px; background: white; color: var(--ink); text-decoration: none; box-shadow: var(--shadow-sm); }
+.related-tool-grid a:hover, .calculator-directory a:hover { border-color: #fdba74; transform: translateY(-1px); }
+.related-tool-grid span, .calculator-directory span { color: var(--muted); font-size: .76rem; line-height: 1.55; }
+.all-tools-link { display: table; margin: 18px auto 0; font-weight: 700; }
+.directory-guidance { margin-top: 45px; }
+
 /* Footer */
 .site-footer { padding-top: 62px; background: var(--ink); color: #cbd5e1; }
 .footer-grid { display: grid; grid-template-columns: 1.3fr .7fr .85fr 1.35fr; gap: 42px; align-items: start; }
@@ -359,6 +411,9 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
   }
   .nav.open { display: flex; }
   .nav a { min-height: 44px; display: flex; align-items: center; justify-content: center; }
+  .nav-dropdown summary { justify-content: center; }
+  .nav-dropdown-menu { position: static; width: 100%; padding: 5px 0 0; border: 0; box-shadow: none; transform: none; }
+  .nav .nav-dropdown-menu a { min-height: 42px; padding: 8px 12px; }
   .nav .nav-cta { margin-left: 0; }
   .hero { padding: 54px 0 45px; }
   .hero-grid { grid-template-columns: 1fr; text-align: center; }
@@ -368,6 +423,8 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
   .bowl-art { max-width: 390px; order: -1; }
   .calculator-grid { grid-template-columns: 1fr; }
   .results { position: static; }
+  .health-calculator { grid-template-columns: 1fr; }
+  .health-results { position: static; }
   .callout-grid, .example-grid { grid-template-columns: 1fr 1fr; }
   .filters { grid-template-columns: 1fr 1fr; }
   .filters label:first-child { grid-column: 1 / -1; }
@@ -402,6 +459,7 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
   .actions { flex-direction: column; }
   .actions button { width: 100%; }
   .macro-grid { grid-template-columns: repeat(3, 1fr); }
+  .health-field-grid, .related-tool-grid, .calculator-directory { grid-template-columns: 1fr; }
   .callout-grid, .example-grid, .filters, .footer-grid { grid-template-columns: 1fr; }
   .jump-links { grid-template-columns: 1fr; }
   .filters label:first-child { grid-column: auto; }
