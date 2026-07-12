@@ -2,6 +2,11 @@ import type { Metadata, Viewport } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { siteConfig } from "@/config/site";
+import "@fontsource/poppins/400.css";
+import "@fontsource/poppins/500.css";
+import "@fontsource/poppins/600.css";
+import "@fontsource/poppins/700.css";
+import "@fontsource/poppins/800.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -10,6 +15,6 @@ export const metadata: Metadata = {
   openGraph:{type:"website",locale:"en_US",siteName:siteConfig.name,title:siteConfig.title,description:siteConfig.description,url:siteConfig.url,images:[{url:"/og-image.svg",width:1200,height:630,alt:"BIBIBOP Nutrition Calculator with an orange bowl and nutrition bars"}]},
   twitter:{card:"summary_large_image",title:siteConfig.title,description:siteConfig.description,images:["/og-image.svg"]},
 };
-export const viewport: Viewport = { width:"device-width", initialScale:1, themeColor:"#fff8f1" };
+export const viewport: Viewport = { width:"device-width", initialScale:1, themeColor:"#ffffff" };
 
 export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en-US"><body><a className="skip-link" href="#main-content">Skip to main content</a><Header/><main id="main-content">{children}</main><Footer/></body></html>}

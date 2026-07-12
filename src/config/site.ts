@@ -17,7 +17,7 @@ export const siteConfig = {
 } as const;
 
 export const publicRoutes = [
-  "/", "/about/", "/contact/", "/data-sources-methodology/", "/editorial-policy/",
+  "/", "/about/", "/contact/", "/editorial-policy/",
   "/corrections-policy/", "/privacy-policy/", "/cookie-policy/", "/terms/",
   "/medical-disclaimer/", "/trademark-disclaimer/", "/advertising-disclosure/",
   "/accessibility/", "/sitemap/",

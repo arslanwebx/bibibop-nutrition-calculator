@@ -16,6 +16,7 @@
     "preview": "npx wrangler pages dev out"
   },
   "dependencies": {
+    "@fontsource/poppins": "latest",
     "@tailwindcss/postcss": "latest",
     "next": "latest",
     "react": "latest",
