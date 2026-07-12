@@ -218,7 +218,9 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
   content: ""; display: block; width: 54px; height: 4px; margin: 13px auto 0; border-radius: 4px; background: var(--orange);
 }
 .article h3, .page-content h3 { margin: 25px 0 12px; font-size: 1.2rem; }
-.callout-grid, .example-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 28px 0; }
+.callout-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 28px 0; }
+.examples-section, .faq-section { width: 100%; max-width: 980px; margin-inline: auto; }
+.example-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px; margin: 28px auto; }
 .card { position: relative; overflow: hidden; padding: 22px 18px; text-align: center; }
 .card::before { content: ""; position: absolute; inset: 0 0 auto; height: 4px; background: linear-gradient(90deg, var(--orange), #fb923c); }
 .card span { color: var(--muted); font-size: .76rem; font-weight: 650; text-transform: uppercase; letter-spacing: .05em; }
@@ -226,7 +228,7 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
 .card small { color: var(--muted); }
 .example-grid .card { display: flex; flex-direction: column; }
 .example-grid .card p { font-size: .84rem; }
-.faq { margin: 20px auto 0; border-top: 1px solid var(--border); }
+.faq { width: 100%; margin: 20px auto 0; border-top: 1px solid var(--border); }
 .faq details { border-bottom: 1px solid var(--border); padding: 16px 4px; }
 .faq summary { cursor: pointer; color: var(--ink); font-weight: 700; text-align: left; }
 .faq details p { margin: 12px 0 0; color: var(--text); }
