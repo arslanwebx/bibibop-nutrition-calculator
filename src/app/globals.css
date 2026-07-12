@@ -68,13 +68,13 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
 .brand-link, .footer-logo { text-decoration: none; }
 .logo { display: inline-flex; align-items: center; gap: 9px; color: var(--orange); }
 .logo-mark {
-  width: 46px; height: 46px; display: grid; place-items: center;
+  width: 53px; height: 53px; display: grid; place-items: center;
   border-radius: 12px; background: var(--orange-soft); flex: 0 0 auto;
 }
-.logo-mark svg { width: 39px; height: 39px; }
+.logo-mark svg { width: 45px; height: 45px; }
 .logo-copy { display: inline-flex; align-items: center; color: var(--ink); line-height: 1; white-space: nowrap; }
-.logo-copy b { font-size: 1.08rem; letter-spacing: .055em; font-weight: 800; }
-.logo-copy span { margin-left: 10px; padding-left: 10px; border-left: 1px solid #d1d5db; color: var(--muted); font-size: .75rem; font-weight: 600; letter-spacing: .015em; }
+.logo-copy b { font-size: 1.24rem; letter-spacing: .055em; font-weight: 800; }
+.logo-copy span { margin-left: 10px; padding-left: 10px; border-left: 1px solid #d1d5db; color: var(--muted); font-size: .81rem; font-weight: 600; letter-spacing: .015em; }
 .nav { display: flex; align-items: center; gap: 6px; }
 .nav a {
   color: var(--ink); text-decoration: none; font-size: .9rem; font-weight: 600;
@@ -103,7 +103,7 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
   letter-spacing: .16em; text-transform: uppercase; text-align: center;
 }
 .hero-copy .eyebrow, .hero-copy h1, .hero-copy .lede { text-align: left; }
-.hero h1 { margin: 0 0 24px; font-size: clamp(2.7rem, 4.6vw, 4.15rem); font-weight: 800; line-height: 1.08; letter-spacing: -.05em; }
+.hero h1 { margin: 0 0 24px; font-size: clamp(2.7rem, 4.6vw, 4.15rem); font-weight: 700; line-height: 1.1; letter-spacing: -.018em; }
 .hero h1 span { display: block; }
 .hero h1 .hero-brand { display: inline; color: var(--orange); }
 .lede { color: #4b5563; font-size: 1.08rem; line-height: 1.78; }
@@ -383,9 +383,9 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
 @media (max-width: 600px) {
   body { font-size: 15px; }
   .shell { width: min(100% - 22px, 1280px); }
-  .logo-mark { width: 38px; height: 38px; border-radius: 10px; }
-  .logo-mark svg { width: 32px; height: 32px; }
-  .logo-copy b { font-size: .9rem; }
+  .logo-mark { width: 44px; height: 44px; border-radius: 10px; }
+  .logo-mark svg { width: 37px; height: 37px; }
+  .logo-copy b { font-size: 1.04rem; }
   .logo-copy span { display: none; }
   .hero h1 { font-size: clamp(2.15rem, 10.5vw, 3.1rem); line-height: 1.12; }
   .hero-actions { flex-direction: column; }
