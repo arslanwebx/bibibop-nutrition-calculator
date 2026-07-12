@@ -1,6 +1,6 @@
 # BIBIBOP Nutrition Calculator
 
-Production-ready independent nutrition calculator for `bibibopnutritioncalculator.pro`. The homepage statically renders a complete 62-row official-PDF dataset, interactive bowl calculator, original explanatory content, FAQ structured data, and nutrition table. Small Cloudflare Pages Functions deliver contact and newsletter forms through Resend after Turnstile verification.
+Production-ready independent nutrition calculator for `bibibopnutritioncalculator.pro`. The homepage statically renders a complete 62-row official-PDF dataset, interactive bowl calculator, original explanatory content, FAQ structured data, and nutrition table. Small Cloudflare Pages Functions deliver contact and newsletter forms through Resend, with optional Turnstile verification when keys are configured.
 
 ## Stack
 
@@ -116,11 +116,11 @@ The newer Workers Git deployment screen can use:
 | `RESEND_API_KEY` | Secret Resend API token, server only |
 | `CONTACT_TO_EMAIL` | Set to `contact@bibibopnutritioncalculator.pro` |
 | `CONTACT_FROM_EMAIL` | Verified sender, for example `Website <forms@bibibopnutritioncalculator.pro>` |
-| `TURNSTILE_SECRET_KEY` | Secret Turnstile verification key |
-| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Public widget key embedded at build time |
+| `TURNSTILE_SECRET_KEY` | Optional secret Turnstile verification key |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Optional public widget key embedded at build time |
 | `SITE_URL` | `https://bibibopnutritioncalculator.pro` |
 
-Set secrets in Cloudflare rather than committing `.env.local`. The client never receives the Resend key or Turnstile secret. If required values are missing, the form endpoint returns 503 and the interface gives the published email instead of pretending delivery succeeded.
+Set secrets in Cloudflare rather than committing `.env.local`. The client never receives the Resend key or Turnstile secret. If required Resend or email values are missing, the form endpoint returns 503 instead of pretending delivery succeeded.
 
 ### Resend and email
 
@@ -132,6 +132,8 @@ Set secrets in Cloudflare rather than committing `.env.local`. The client never 
 Newsletter signups are emailed to the same inbox for manual retention. This is explicitly not described as double opt-in.
 
 ### Turnstile
+
+Turnstile is optional. The forms retain origin checks, field validation, maximum lengths, and honeypot protection without it. To enable Turnstile:
 
 1. Create a Turnstile widget for the apex domain and any preview testing hostname.
 2. Add the public site key as a build environment variable and the secret as a runtime secret.
@@ -147,7 +149,7 @@ Newsletter signups are emailed to the same inbox for manual retention. This is e
 
 ## Security notes
 
-The Pages Functions accept only POST JSON, enforce maximum lengths, validate email and consent, reject disallowed origins, use a honeypot, verify Turnstile server-side, escape HTML email content, send a plain-text alternative, and expose no server secret to browser code. No analytics or advertising scripts are included. Cloudflare-compatible headers are defined in `public/_headers`.
+The Pages Functions accept only POST JSON, enforce maximum lengths, validate email and consent, reject disallowed origins, use a honeypot, verify Turnstile server-side when configured, escape HTML email content, send a plain-text alternative, and expose no server secret to browser code. No analytics or advertising scripts are included. Cloudflare-compatible headers are defined in `public/_headers`.
 
 The CSP permits the exact Turnstile script, frame, and connection origin and allows inline Next.js bootstrap code required by static hydration. Re-test the policy after upgrading Next.js or adding any third-party resource. No implementation should be described as perfectly secure.
 
@@ -155,7 +157,6 @@ Run `npm audit` during dependency updates and review findings in context. Keep N
 
 ## Troubleshooting
 
-- **Form button disabled:** the public Turnstile site key was absent at build time. Set it and redeploy.
 - **Form returns 503:** one or more server environment variables are missing.
 - **Turnstile fails on preview:** add the preview hostname to the widget and ensure the preview environment has keys.
 - **Resend returns an error:** verify the sending domain, From address, API key, and DNS records.
