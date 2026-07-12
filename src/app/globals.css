@@ -250,6 +250,7 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
 .author-link { font-size: .82rem; font-weight: 750; text-decoration: none; }
 .author-profile-intro { display: grid; grid-template-columns: 180px minmax(0,1fr); align-items: center; gap: 32px; }
 .author-profile-intro h2 { margin-top: 0; text-align: left; }
+.author-role-action { display: flex; justify-content: center; }
 .expertise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 !important; list-style: none; }
 .expertise-grid li { padding: 13px 15px; border: 1px solid var(--border); border-radius: 11px; background: var(--surface); color: var(--ink); font-size: .86rem; font-weight: 650; text-align: center; }
 .author-post-list { display: grid; gap: 14px; }
