@@ -425,10 +425,17 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
 }
 
 @media print {
-  .site-header, .site-footer, .builder, .mobile-summary, .hero, .no-print { display: none !important; }
-  .calculator-grid { display: block; }
-  .results { position: static; border: 0; box-shadow: none; }
-  .section { padding: 0; }
+  @page { size: landscape; margin: 10mm; }
+  .site-header, .site-footer, .hero, .section-white, .homepage-author, .mobile-summary, .actions, .no-print { display: none !important; }
+  #calculator { display: block !important; padding: 0; border: 0; background: white; }
+  #calculator > .shell { width: 100%; max-width: none; }
+  #calculator .section-heading { margin-bottom: 18px; }
+  .calculator-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr); gap: 14px; }
+  .builder, .results { border: 1px solid #d1d5db; box-shadow: none; }
+  .builder { padding: 16px; }
+  .results { position: static; padding: 16px; break-inside: avoid; }
+  .category-picker { padding: 10px 0; }
+  .selection-row { break-inside: avoid; }
   body { background: white; }
 }
 
