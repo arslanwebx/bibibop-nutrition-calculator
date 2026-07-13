@@ -249,9 +249,9 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
 .showcase-icon svg { width: 34px; height: 34px; fill: currentColor; }
 .showcase-icon.icon-macro-calculator,.showcase-icon.icon-tdee-calculator { background: #ecfdf3; color: #15803d; }
 .showcase-icon.icon-carb-calculator { background: #fffbeb; color: #d97706; }
-.showcase-arrow { position: absolute; right: 22px; bottom: 22px; width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.4); border-radius: 50%; background: linear-gradient(145deg,#ff7a1a,var(--orange-dark)); color: white; box-shadow: 0 7px 16px rgba(234,88,12,.22); transition: transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s ease,filter .28s ease; }
+.showcase-arrow { position: absolute; right: 22px; bottom: 22px; width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid #ffd7b8; border-radius: 50%; background: #fff1e6; color: var(--orange); box-shadow: 0 6px 14px rgba(249,115,22,.1); transition: transform .28s cubic-bezier(.2,.8,.2,1),background .28s ease,border-color .28s ease,box-shadow .28s ease; }
 .showcase-arrow svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .28s cubic-bezier(.2,.8,.2,1); }
-.showcase-card:hover .showcase-arrow,.showcase-card:focus-visible .showcase-arrow { transform: translateY(-2px) scale(1.06); box-shadow: 0 11px 22px rgba(234,88,12,.3); filter: saturate(1.08); }
+.showcase-card:hover .showcase-arrow,.showcase-card:focus-visible .showcase-arrow { background: #ffe8d5; border-color: #ffbd8a; transform: translateY(-2px) scale(1.06); box-shadow: 0 9px 18px rgba(249,115,22,.16); }
 .showcase-card:hover .showcase-arrow svg,.showcase-card:focus-visible .showcase-arrow svg { transform: translateX(2px); }
 .showcase-all-link { width: fit-content; display: flex; align-items: center; margin: 30px auto 0; gap: 10px; }
 .showcase-all-arrow { width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; background: #fff3e8; color: var(--orange-dark); transition: transform .24s ease,background .24s ease; }
