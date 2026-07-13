@@ -25,7 +25,7 @@ export default async function CalculatorPage({params}:{params:Promise<{slug:stri
     <PageShell title={tool.name} description={tool.shortDescription}>
       <p className="calculator-answer">{copy.answer}</p>
       <HealthCalculator type={slug}/>
-      <p className="calculator-review">Method and limitations reviewed by <Link href="/author/m-arslan/">M. Arsalan</Link>. Last reviewed July 12, 2026.</p>
+      <p className="calculator-review">Method and limitations reviewed by <Link href="/author/m-arslan/">M. Arsalan</Link>.</p>
       <div className="calculator-article">{copy.sections.map(section=><section key={section.heading}><h2>{section.heading}</h2>{section.body}</section>)}</div>
       <section className="tool-faq" aria-labelledby="calculator-faq-heading"><h2 id="calculator-faq-heading">Frequently asked questions</h2>{copy.faqs.map(faq=><details key={faq.question}><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}</section>
       <section className="related-tools" aria-labelledby="related-tools-heading"><h2 id="related-tools-heading">Related calculators</h2><div className="related-tool-grid">{related.map(item=><Link href={calculatorHref(item.slug)} key={item.slug}><strong>{item.name}</strong><span>{item.shortDescription}</span></Link>)}</div><Link className="all-tools-link" href="/nutrition-calculators/">View all nutrition calculators</Link></section>
