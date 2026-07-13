@@ -17,7 +17,7 @@ export const siteConfig = {
 } as const;
 
 export const publicRoutes = [
-  "/", "/nutrition-calculators/", "/nutrition-calculators/calorie-calculator/",
+  "/", "/bibibop-nutrition-facts/", "/nutrition-calculators/", "/nutrition-calculators/calorie-calculator/",
   "/nutrition-calculators/macro-calculator/", "/nutrition-calculators/protein-calculator/",
   "/nutrition-calculators/carb-calculator/", "/nutrition-calculators/fat-intake-calculator/",
   "/nutrition-calculators/tdee-calculator/", "/nutrition-calculators/bmr-calculator/",

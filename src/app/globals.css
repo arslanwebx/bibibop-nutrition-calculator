@@ -341,6 +341,52 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
 .nutrition-table tbody tr:hover td { background: #fffaf5; }
 #nutrition-table { text-align: center; }
 
+/* Nutrition Facts Landing Page */
+.home-nutrition-summary { max-width: 980px; margin: 0 auto 36px; }
+.category-summary-table { width: 100%; border-collapse: collapse; font-size: .86rem; }
+.category-summary-table caption { padding: 14px 18px; border-bottom: 1px solid var(--border); color: var(--muted); text-align: left; }
+.category-summary-table th,.category-summary-table td { padding: 12px 14px; border-bottom: 1px solid #eef0f2; text-align: left; }
+.category-summary-table thead th { background: var(--ink); color: white; font-size: .76rem; }
+.category-summary-table tbody th { color: var(--ink); }
+.category-summary-table tbody tr:last-child th,.category-summary-table tbody tr:last-child td { border-bottom: 0; }
+.summary-database-link { display: flex; justify-content: center; margin-top: 22px; }
+.nutrition-facts-page { padding-top: 44px; }
+.nutrition-facts-shell { max-width: 1180px; }
+.facts-hero { max-width: 850px; margin: 32px auto 42px; text-align: center; }
+.facts-hero h1 { margin: 8px 0 16px; font-size: clamp(2.25rem,5vw,4rem); line-height: 1.08; }
+.facts-hero .lede { max-width: 780px; margin-inline: auto; }
+.facts-hero .hero-actions { justify-content: center; }
+.eyebrow { margin: 0; color: #15803d; font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.facts-category-nav { position: sticky; top: 74px; z-index: 8; display: flex; justify-content: center; gap: 7px; margin: 0 auto 44px; padding: 10px; overflow-x: auto; border: 1px solid var(--border); border-radius: 14px; background: rgba(255,255,255,.96); box-shadow: var(--shadow-sm); scrollbar-width: thin; }
+.facts-category-nav a { flex: 0 0 auto; padding: 8px 11px; border-radius: 8px; color: var(--ink); font-size: .76rem; font-weight: 700; text-decoration: none; }
+.facts-category-nav a:hover,.facts-category-nav a:focus-visible { background: var(--orange-soft); color: var(--orange-dark); }
+.facts-content { max-width: 980px; margin: 0 auto; }
+.facts-content > section { scroll-margin-top: 150px; margin: 0 0 26px; padding: clamp(24px,4vw,40px); border: 1px solid var(--border); border-radius: 20px; background: white; box-shadow: var(--shadow-sm); }
+.facts-content h2 { margin: 0 0 12px; font-size: clamp(1.55rem,3vw,2.15rem); text-align: left; }
+.facts-content h3 { font-size: 1rem; }
+.facts-content p { color: var(--muted); }
+.facts-stat-row { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; margin-top: 22px; }
+.facts-stat-row > div { display: flex; flex-direction: column; min-height: 125px; padding: 17px; border: 1px solid #fed7aa; border-radius: 14px; background: #fffaf5; }
+.facts-stat-row span,.comparison-card > span { color: #15803d; font-size: .69rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.facts-stat-row strong { margin: 9px 0 2px; color: var(--ink); line-height: 1.35; }
+.facts-stat-row small { margin-top: auto; color: var(--muted); }
+.comparison-grid { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 10px; margin-top: 22px; }
+.comparison-card { display: flex; flex-direction: column; min-height: 180px; padding: 16px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); }
+.comparison-card h3 { margin: 12px 0 6px; line-height: 1.35; }
+.comparison-card strong { color: var(--orange-dark); }
+.comparison-card small { margin-top: auto; padding-top: 12px; color: var(--muted); line-height: 1.45; }
+.comparison-notes { margin-top: 18px; padding: 18px; border-left: 4px solid var(--orange); border-radius: 0 12px 12px 0; background: var(--orange-soft); }
+.comparison-notes h3 { margin: 0 0 7px; }
+.comparison-notes p { margin: 0; }
+.full-table-section { max-width: none; padding-inline: clamp(16px,3vw,30px) !important; }
+.full-table-section .filters { margin-top: 24px; }
+.source-history ol { color: var(--muted); }
+.source-history li + li { margin-top: 10px; }
+.related-facts-guides .related-tool-grid { margin-top: 22px; }
+.facts-final-cta { text-align: center; background: linear-gradient(135deg,#fff7ed,#fff) !important; }
+.facts-final-cta h2 { text-align: center; }
+.facts-final-cta p { max-width: 680px; margin: 0 auto 22px; }
+
 /* Inner Pages */
 .content-page { padding: 60px 0 90px; background: var(--surface); }
 .article-card { max-width: 940px; margin: auto; padding: clamp(24px, 5vw, 54px); }
@@ -433,6 +479,7 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
   .hero-grid { gap: 35px; }
   .calculator-grid { grid-template-columns: minmax(0, 1fr) 340px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
+  .comparison-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
 }
 
 @media (max-width: 800px) {
@@ -468,6 +515,9 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
   .filters { grid-template-columns: 1fr 1fr; }
   .filters label:first-child { grid-column: 1 / -1; }
   .jump-links { grid-template-columns: 1fr 1fr; }
+  .facts-category-nav { top: 78px; justify-content: flex-start; }
+  .facts-stat-row { grid-template-columns: 1fr; }
+  .facts-stat-row > div { min-height: 105px; }
   .mobile-summary {
     display: grid; position: sticky; bottom: 8px; z-index: 20; grid-template-columns: repeat(4, 1fr);
     padding: 10px; border-radius: 12px; background: var(--ink); color: white; box-shadow: var(--shadow-md); text-align: center; font-size: .68rem;
@@ -504,6 +554,14 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
   .showcase-card { min-height: 180px; padding: 20px 54px 20px 20px; }
   .showcase-icon { width: 52px; height: 52px; }
   .jump-links { grid-template-columns: 1fr; }
+  .nutrition-facts-page { padding-top: 26px; }
+  .facts-hero { margin: 26px auto 30px; }
+  .facts-category-nav { margin-bottom: 28px; }
+  .facts-content > section { padding: 22px 17px; border-radius: 16px; }
+  .comparison-grid { grid-template-columns: 1fr 1fr; }
+  .comparison-card { min-height: 160px; }
+  .category-summary-table { min-width: 660px; }
+  .home-nutrition-summary .table-wrap { overflow-x: auto; }
   .filters label:first-child { grid-column: auto; }
   .footer-grid { gap: 32px; text-align: center; }
   .footer-heading { text-align: center; }
