@@ -98,6 +98,7 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
 .nav-dropdown.open > .nav-dropdown-menu { display: block; }
 .nav .nav-dropdown-menu a { display: block; padding: 9px 11px; font-size: .78rem; line-height: 1.35; }
 .nav .nav-dropdown-menu a strong { color: var(--orange-dark); }
+.nav .nav-dropdown-menu .nav-dropdown-all { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 7px; padding-top: 12px; border-top: 1px solid var(--border); border-radius: 0 0 8px 8px; color: var(--orange-dark); font-weight: 750; }
 @media (hover: hover) and (min-width: 801px) {
   .nav-dropdown:hover > .nav-dropdown-menu, .nav-dropdown:focus-within > .nav-dropdown-menu { display: block; }
   .nav-dropdown:hover .dropdown-chevron, .nav-dropdown:focus-within .dropdown-chevron { transform: rotate(225deg); }
@@ -248,9 +249,14 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
 .showcase-icon svg { width: 34px; height: 34px; fill: currentColor; }
 .showcase-icon.icon-macro-calculator,.showcase-icon.icon-tdee-calculator { background: #ecfdf3; color: #15803d; }
 .showcase-icon.icon-carb-calculator { background: #fffbeb; color: #d97706; }
-.showcase-arrow { position: absolute; right: 22px; bottom: 24px; width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; background: var(--orange); color: white; font-size: 1.3rem; transition: transform .2s ease,background .2s ease; }
-.showcase-card:hover .showcase-arrow { background: var(--orange-dark); transform: translateX(2px); }
-.showcase-all-link { width: fit-content; display: flex; margin: 30px auto 0; gap: 8px; }
+.showcase-arrow { position: absolute; right: 22px; bottom: 22px; width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.4); border-radius: 50%; background: linear-gradient(145deg,#ff7a1a,var(--orange-dark)); color: white; box-shadow: 0 7px 16px rgba(234,88,12,.22); transition: transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s ease,filter .28s ease; }
+.showcase-arrow svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .28s cubic-bezier(.2,.8,.2,1); }
+.showcase-card:hover .showcase-arrow,.showcase-card:focus-visible .showcase-arrow { transform: translateY(-2px) scale(1.06); box-shadow: 0 11px 22px rgba(234,88,12,.3); filter: saturate(1.08); }
+.showcase-card:hover .showcase-arrow svg,.showcase-card:focus-visible .showcase-arrow svg { transform: translateX(2px); }
+.showcase-all-link { width: fit-content; display: flex; align-items: center; margin: 30px auto 0; gap: 10px; }
+.showcase-all-arrow { width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; background: #fff3e8; color: var(--orange-dark); transition: transform .24s ease,background .24s ease; }
+.showcase-all-arrow svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.showcase-all-link:hover .showcase-all-arrow,.showcase-all-link:focus-visible .showcase-all-arrow { background: #ffead5; transform: translateX(3px); }
 
 /* Editorial Content */
 .article { max-width: 1280px; }
