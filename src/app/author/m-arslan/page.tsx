@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import PageShell from "@/components/content/PageShell";
 import {authorConfig} from "@/config/author";
-import {blogPosts} from "@/data/blog-posts";
+import {blogArticleHref,blogPosts} from "@/data/blog-posts";
 
 export const metadata:Metadata={
   title:"M. Arsalan | Author And Editorial Reviewer",
@@ -22,7 +22,7 @@ export default function AuthorPage(){
       <section><h2>Areas Of Expertise</h2><ul className="expertise-grid">{authorConfig.expertise.map(area=><li key={area}>{area}</li>)}</ul></section>
       <section><h2>Editorial And Research Approach</h2><p>Research begins with the most complete available primary nutrition source. Values are checked as a single dataset rather than mixed across conflicting versions. Tokens such as “&lt;1” and “N/A” remain visible, while any calculation estimate is labeled separately.</p><p>Editorial review focuses on plain language, accurate comparisons, transparent limitations, and avoiding unsupported medical or health claims. Calculator examples are produced from the same central data and calculation functions used by the interactive tool.</p></section>
       <section className="author-role"><h2>Role On This Website</h2><p>M. Arsalan is responsible for nutrition research, food-data review, calculator logic review, and editorial oversight for published informational content. This role does not replace guidance from a qualified medical or dietary professional.</p><p className="author-role-action"><Link className="button" href="/#calculator">Use The BIBIBOP Nutrition Calculator</Link></p></section>
-      <section className="author-posts"><h2>Published Blog Posts</h2>{posts.length?<div className="author-post-list">{posts.map(post=><article key={post.href}><h3><Link href={post.href}>{post.title}</Link></h3><p>{post.description}</p><time dateTime={post.publishedDate}>{post.publishedDate}</time></article>)}</div>:<div className="author-empty-state"><svg viewBox="0 0 180 120" aria-hidden="true"><rect x="28" y="14" width="124" height="92" rx="12" fill="#fff7ed" stroke="#f97316" strokeWidth="3"/><path d="M52 44h76M52 65h60M52 86h70" stroke="#166534" strokeWidth="6" strokeLinecap="round"/></svg><h3>No Published Posts Yet</h3><p>Source-checked nutrition guides by M. Arsalan will appear here after publication. The calculator remains available now.</p><Link href="/#calculator">Go To The Calculator</Link></div>}</section>
+      <section className="author-posts"><h2>Published Blog Posts</h2>{posts.length?<div className="author-post-list">{posts.map(post=><article key={post.id}><h3><Link href={blogArticleHref(post.slug)}>{post.title}</Link></h3><p>{post.description}</p><time dateTime={post.publishedDate}>{post.publishedDate}</time></article>)}</div>:<div className="author-empty-state"><svg viewBox="0 0 180 120" aria-hidden="true"><rect x="28" y="14" width="124" height="92" rx="12" fill="#fff7ed" stroke="#f97316" strokeWidth="3"/><path d="M52 44h76M52 65h60M52 86h70" stroke="#166534" strokeWidth="6" strokeLinecap="round"/></svg><h3>No Published Posts Yet</h3><p>Source-checked nutrition guides by M. Arsalan will appear here after publication. The calculator remains available now.</p><Link href="/#calculator">Go To The Calculator</Link></div>}</section>
     </PageShell>
   </>;
 }

@@ -1,0 +1,12 @@
+import type {Metadata} from "next";
+import {notFound} from "next/navigation";
+import BlogCategoryArchive from "@/components/content/BlogCategoryArchive";
+import BlogPostTemplate from "@/components/content/BlogPostTemplate";
+import {blogCategoryBySlug,mainBlogCategories} from "@/data/blog-categories";
+import {blogArticleHref,blogPostBySlug,blogPosts} from "@/data/blog-posts";
+import {siteConfig} from "@/config/site";
+
+export const dynamicParams=false;
+export function generateStaticParams(){return [...mainBlogCategories.filter(category=>category.slug!=="comparisons").map(category=>({segment:category.slug})),...blogPosts.map(post=>({segment:post.slug}))]}
+export async function generateMetadata({params}:{params:Promise<{segment:string}>}):Promise<Metadata>{const {segment}=await params;const category=blogCategoryBySlug(segment);if(category&&category.parent===null){return {title:category.metaTitle,description:category.metaDescription,alternates:{canonical:category.url},openGraph:{title:category.metaTitle,description:category.metaDescription,url:`${siteConfig.url}${category.url}`,type:"website"}}}const post=blogPostBySlug(segment);if(!post)return {};const path=blogArticleHref(post.slug);return {title:post.title,description:post.description,alternates:{canonical:path},openGraph:{title:post.title,description:post.description,url:`${siteConfig.url}${path}`,type:"article",publishedTime:post.publishedDate,modifiedTime:post.updatedDate,images:post.featuredImage?[{url:post.featuredImage.src,width:post.featuredImage.width,height:post.featuredImage.height,alt:post.featuredImage.alt}]:undefined}}}
+export default async function BlogSegmentPage({params}:{params:Promise<{segment:string}>}){const {segment}=await params;const category=blogCategoryBySlug(segment);if(category&&category.parent===null)return <BlogCategoryArchive category={category}/>;const post=blogPostBySlug(segment);if(!post)notFound();const relatedPosts=post.relatedSlugs.map(slug=>blogPostBySlug(slug)).filter((item):item is NonNullable<typeof item>=>Boolean(item));return <BlogPostTemplate title={post.title} description={post.description} slug={post.slug} publishedDate={post.publishedDate} updatedDate={post.updatedDate} primaryCategory={post.primaryCategory} relatedPosts={relatedPosts}>{post.sections.map(section=><section key={section.heading}><h2>{section.heading}</h2>{section.paragraphs.map(paragraph=><p key={paragraph}>{paragraph}</p>)}</section>)}</BlogPostTemplate>}

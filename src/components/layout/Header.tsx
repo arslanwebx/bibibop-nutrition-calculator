@@ -3,7 +3,7 @@ import {useState} from "react";
 import Link from "next/link";
 import {usePathname} from "next/navigation";
 import {calculatorHref,calculatorTools} from "@/data/health-calculators";
-import {blogCategories,blogCategoryHref} from "@/data/blog-categories";
+import {mainBlogCategories,blogCategoryHref} from "@/data/blog-categories";
 
 export function Logo(){return <span className="logo"><span className="logo-mark"><svg viewBox="0 0 56 56" aria-hidden="true"><path d="M8 29h40c-2.7 12.8-10 19-20 19S10.7 41.8 8 29Z" fill="currentColor"/><path d="M14 25h28" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round"/><path d="M18 20V14M28 20V8M38 20V12" stroke="#166534" strokeWidth="4.5" strokeLinecap="round"/></svg></span><span className="logo-copy"><b>BIBIBOP</b><span>Nutrition Calculator</span></span></span>}
 
@@ -39,7 +39,7 @@ export default function Header(){
       </div>
       <div className={`nav-dropdown blog-nav-dropdown${blogOpen?" open":""}${blogActive?" current":""}`} {...blogEvents} onBlurCapture={event=>{if(desktopHover()&&!event.currentTarget.contains(event.relatedTarget))setBlogOpen(false)}}>
         <div className="nav-dropdown-trigger"><Link className="nav-dropdown-label" href="/blog/" aria-current={currentPath==="/blog"?"page":undefined} onClick={closeMenu}>Blog</Link><button className="nav-dropdown-toggle" type="button" aria-label="Toggle blog categories" aria-expanded={blogOpen} aria-controls="blog-menu" onClick={()=>{setBlogOpen(value=>!value);setCalculatorsOpen(false)}}><span className="dropdown-chevron" aria-hidden="true"/></button></div>
-        <div className="nav-dropdown-menu blog-dropdown-menu" id="blog-menu"><Link href="/blog/" aria-current={currentPath==="/blog"?"page":undefined} onClick={closeMenu}><strong>All Guides</strong></Link>{blogCategories.map(category=>{const categoryPath=blogCategoryHref(category.slug).slice(0,-1);return <Link href={blogCategoryHref(category.slug)} aria-current={currentPath===categoryPath||currentPath.startsWith(`${categoryPath}/page/`)?"page":undefined} onClick={closeMenu} key={category.slug}>{category.name}</Link>})}</div>
+        <div className="nav-dropdown-menu blog-dropdown-menu" id="blog-menu"><Link href="/blog/" aria-current={currentPath==="/blog"?"page":undefined} onClick={closeMenu}><strong>All Guides</strong></Link>{mainBlogCategories.map(category=>{const categoryPath=blogCategoryHref(category.slug).slice(0,-1);return <Link href={blogCategoryHref(category.slug)} aria-current={currentPath===categoryPath||currentPath.startsWith(`${categoryPath}/`)?"page":undefined} onClick={closeMenu} key={category.slug}>{category.name}</Link>})}</div>
       </div>
       <Link href="/about/" aria-current={currentPath.startsWith("/about")?"page":undefined} onClick={closeMenu}>About</Link>
     </nav>

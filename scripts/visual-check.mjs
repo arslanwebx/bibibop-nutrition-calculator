@@ -91,7 +91,22 @@ for(const viewport of [{name:"desktop",width:1440,height:1000},{name:"mobile",wi
   const activeBlogCategory=await page.locator("#blog-menu a[aria-current='page']").textContent();
   const blogOverflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
 
-  checks.push({viewport:viewport.name,directoryHref,nutritionFactsHref,dropdownLinks,visibleBeforeInteraction,dropdownVisible,closesAfterMouseLeave,overflow,liveResultChanged:before!==after,minimumControlHeight:Math.min(...controls),chevronAlignment,proteinRange,proteinOverflow,calculatorWidth,homepageFullTable,summaryRows,fullDatabaseHref,showcaseCards,showcaseColumns,allCalculatorsHref,showcaseOrder,buttonOffset,factsHeading,tableCaption,tableRows,categoryLinks,factsOverflow,filteredTableRows,blogTitle,blogCanonical,blogH1,blogCards,blogColumns,blogCategoryHrefs,blogEmptyMessage,blogMenuVisibleBefore,blogMenuVisible,blogMenuLinks,blogKeyboardFocus,categoryH1,categoryCanonical,categoryNoindex,categoryEmptyMessage,relatedCategoryLinks,categoryCalculatorHref,activeBlogCategory,blogOverflow});
+  await page.goto("http://127.0.0.1:3005/blog/comparisons/",{waitUntil:"networkidle"});
+  const comparisonsH1=await page.locator("h1").count();
+  const comparisonChildCards=await page.locator(".comparison-child-grid > a").count();
+  const comparisonChildHrefs=await page.locator(".comparison-child-grid > a").evaluateAll(nodes=>nodes.map(node=>node.getAttribute("href")));
+  const comparisonsCanonical=await page.locator('link[rel="canonical"]').getAttribute("href");
+  const comparisonsArticleCards=await page.locator(".blog-post-card").count();
+  const comparisonsSchemaTypes=await page.locator('script[type="application/ld+json"]').evaluateAll(nodes=>nodes.map(node=>JSON.parse(node.textContent||"{}")["@type"]));
+  await page.goto("http://127.0.0.1:3005/blog/comparisons/meal-comparisons/",{waitUntil:"networkidle"});
+  const childH1=await page.locator("h1").count();
+  const childCanonical=await page.locator('link[rel="canonical"]').getAttribute("href");
+  const childBreadcrumb=await page.locator(".breadcrumbs").textContent();
+  const childRelatedHrefs=await page.locator(".related-category-grid a").evaluateAll(nodes=>nodes.map(node=>node.getAttribute("href")));
+  const childArticleCards=await page.locator(".blog-post-card").count();
+  const childOverflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
+
+  checks.push({viewport:viewport.name,directoryHref,nutritionFactsHref,dropdownLinks,visibleBeforeInteraction,dropdownVisible,closesAfterMouseLeave,overflow,liveResultChanged:before!==after,minimumControlHeight:Math.min(...controls),chevronAlignment,proteinRange,proteinOverflow,calculatorWidth,homepageFullTable,summaryRows,fullDatabaseHref,showcaseCards,showcaseColumns,allCalculatorsHref,showcaseOrder,buttonOffset,factsHeading,tableCaption,tableRows,categoryLinks,factsOverflow,filteredTableRows,blogTitle,blogCanonical,blogH1,blogCards,blogColumns,blogCategoryHrefs,blogEmptyMessage,blogMenuVisibleBefore,blogMenuVisible,blogMenuLinks,blogKeyboardFocus,categoryH1,categoryCanonical,categoryNoindex,categoryEmptyMessage,relatedCategoryLinks,categoryCalculatorHref,activeBlogCategory,blogOverflow,comparisonsH1,comparisonChildCards,comparisonChildHrefs,comparisonsCanonical,comparisonsArticleCards,comparisonsSchemaTypes,childH1,childCanonical,childBreadcrumb,childRelatedHrefs,childArticleCards,childOverflow});
   await page.close();
 }
 const tabletPage=await browser.newPage({viewport:{width:820,height:1000}});

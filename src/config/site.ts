@@ -17,7 +17,7 @@ export const siteConfig = {
 } as const;
 
 export const publicRoutes = [
-  "/", "/bibibop-nutrition-facts/", "/blog/", "/blog/nutrition-guides/", "/blog/ordering-guides/", "/blog/nutrition-education/", "/blog/comparisons/", "/nutrition-calculators/", "/nutrition-calculators/calorie-calculator/",
+  "/", "/bibibop-nutrition-facts/", "/blog/", "/blog/nutrition-guides/", "/blog/ordering-guides/", "/blog/nutrition-education/", "/blog/comparisons/", "/blog/comparisons/meal-comparisons/", "/blog/comparisons/restaurant-comparisons/", "/nutrition-calculators/", "/nutrition-calculators/calorie-calculator/",
   "/nutrition-calculators/macro-calculator/", "/nutrition-calculators/protein-calculator/",
   "/nutrition-calculators/carb-calculator/", "/nutrition-calculators/fat-intake-calculator/",
   "/nutrition-calculators/tdee-calculator/", "/nutrition-calculators/bmr-calculator/",

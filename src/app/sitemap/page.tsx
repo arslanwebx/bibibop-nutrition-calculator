@@ -12,6 +12,8 @@ const names:Record<string,string>={
   "/blog/ordering-guides/":"BIBIBOP Ordering Guides",
   "/blog/nutrition-education/":"Nutrition Education",
   "/blog/comparisons/":"BIBIBOP Nutrition Comparisons",
+  "/blog/comparisons/meal-comparisons/":"BIBIBOP Meal Comparisons",
+  "/blog/comparisons/restaurant-comparisons/":"BIBIBOP Restaurant Comparisons",
   "/nutrition-calculators/":"Nutrition Calculators",
   "/nutrition-calculators/calorie-calculator/":"Calorie Calculator",
   "/nutrition-calculators/macro-calculator/":"Macro Calculator",
