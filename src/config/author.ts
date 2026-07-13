@@ -5,8 +5,8 @@ export const authorConfig = {
   slug: "m-arslan",
   path: "/author/m-arslan/",
   url: `${siteConfig.url}/author/m-arslan/`,
-  image: "/brand/m-arsalan-avatar-v2.svg",
-  imageUrl: `${siteConfig.url}/brand/m-arsalan-avatar-v2.svg`,
+  image: "/brand/m-arslan-author-logo-compressed.jpg",
+  imageUrl: `${siteConfig.url}/brand/m-arslan-author-logo-compressed.jpg`,
   shortBio: "M. Arsalan researches restaurant nutrition information, checks food-data accuracy, develops calculator logic, and reviews editorial content for this independent website.",
   description: "Author and editorial reviewer focused on nutrition research, food-data accuracy, calculator development, and clear source-based publishing.",
   expertise: [
