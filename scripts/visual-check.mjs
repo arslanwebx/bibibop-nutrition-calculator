@@ -47,6 +47,7 @@ for(const viewport of [{name:"desktop",width:1440,height:1000},{name:"mobile",wi
   const allCalculatorsHref=await page.locator(".showcase-all-link").getAttribute("href");
   const showcaseOrder=await page.evaluate(()=>{const faq=document.querySelector(".faq-section");const tools=document.querySelector(".tools-showcase");const final=[...document.querySelectorAll("h2")].find(node=>node.textContent==="A Practical Final Check")?.closest("section");return !!(faq&&tools&&final&&(faq.compareDocumentPosition(tools)&Node.DOCUMENT_POSITION_FOLLOWING)&&(tools.compareDocumentPosition(final)&Node.DOCUMENT_POSITION_FOLLOWING))});
   const buttonOffset=await page.evaluate(()=>{const button=document.querySelector(".showcase-all-link")?.getBoundingClientRect();const shell=document.querySelector(".tools-showcase .shell")?.getBoundingClientRect();return button&&shell?Math.abs((button.left+button.width/2)-(shell.left+shell.width/2)):null});
+  const containerMetrics=await page.evaluate(()=>{const box=(selector)=>{const rect=document.querySelector(selector)?.getBoundingClientRect();return rect?{left:rect.left,width:rect.width,center:rect.left+rect.width/2}:null};const header=box(".header-inner");const article=box(".article");const examples=box(".examples-section");const nav=box("#site-nav");return {header,article,examples,nav,centerDelta:header&&article?Math.abs(header.center-article.center):null}});
 
   await page.goto("http://127.0.0.1:3005/bibibop-nutrition-facts/",{waitUntil:"networkidle"});
   const factsHeading=await page.getByRole("heading",{name:"BIBIBOP Nutrition Facts And Menu Calories"}).count();
@@ -54,6 +55,7 @@ for(const viewport of [{name:"desktop",width:1440,height:1000},{name:"mobile",wi
   const tableRows=await page.locator(".nutrition-table tbody tr").count();
   const categoryLinks=await page.locator(".facts-category-nav a").count();
   const factsOverflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
+  const factsShellWidth=await page.locator(".nutrition-facts-shell").evaluate(node=>node.getBoundingClientRect().width);
   await page.getByPlaceholder("Search item or alias").fill("steak");
   const filteredTableRows=await page.locator(".nutrition-table tbody tr").count();
 
@@ -90,6 +92,7 @@ for(const viewport of [{name:"desktop",width:1440,height:1000},{name:"mobile",wi
   const categoryCalculatorHref=await page.locator(".blog-calculator-cta a").getAttribute("href");
   const activeBlogCategory=await page.locator("#blog-menu a[aria-current='page']").textContent();
   const blogOverflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
+  const blogShellWidth=await page.locator(".blog-shell").first().evaluate(node=>node.getBoundingClientRect().width);
 
   await page.goto("http://127.0.0.1:3005/blog/comparisons/",{waitUntil:"networkidle"});
   const comparisonsH1=await page.locator("h1").count();
@@ -106,7 +109,7 @@ for(const viewport of [{name:"desktop",width:1440,height:1000},{name:"mobile",wi
   const childArticleCards=await page.locator(".blog-post-card").count();
   const childOverflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
 
-  checks.push({viewport:viewport.name,directoryHref,nutritionFactsHref,dropdownLinks,visibleBeforeInteraction,dropdownVisible,closesAfterMouseLeave,overflow,liveResultChanged:before!==after,minimumControlHeight:Math.min(...controls),chevronAlignment,proteinRange,proteinOverflow,calculatorWidth,homepageFullTable,summaryRows,fullDatabaseHref,showcaseCards,showcaseColumns,allCalculatorsHref,showcaseOrder,buttonOffset,factsHeading,tableCaption,tableRows,categoryLinks,factsOverflow,filteredTableRows,blogTitle,blogCanonical,blogH1,blogCards,blogColumns,blogCategoryHrefs,blogEmptyMessage,blogMenuVisibleBefore,blogMenuVisible,blogMenuLinks,blogKeyboardFocus,categoryH1,categoryCanonical,categoryNoindex,categoryEmptyMessage,relatedCategoryLinks,categoryCalculatorHref,activeBlogCategory,blogOverflow,comparisonsH1,comparisonChildCards,comparisonChildHrefs,comparisonsCanonical,comparisonsArticleCards,comparisonsSchemaTypes,childH1,childCanonical,childBreadcrumb,childRelatedHrefs,childArticleCards,childOverflow});
+  checks.push({viewport:viewport.name,directoryHref,nutritionFactsHref,dropdownLinks,visibleBeforeInteraction,dropdownVisible,closesAfterMouseLeave,overflow,liveResultChanged:before!==after,minimumControlHeight:Math.min(...controls),chevronAlignment,proteinRange,proteinOverflow,calculatorWidth,homepageFullTable,summaryRows,fullDatabaseHref,showcaseCards,showcaseColumns,allCalculatorsHref,showcaseOrder,buttonOffset,containerMetrics,factsHeading,tableCaption,tableRows,categoryLinks,factsOverflow,factsShellWidth,filteredTableRows,blogTitle,blogCanonical,blogH1,blogCards,blogColumns,blogCategoryHrefs,blogEmptyMessage,blogMenuVisibleBefore,blogMenuVisible,blogMenuLinks,blogKeyboardFocus,categoryH1,categoryCanonical,categoryNoindex,categoryEmptyMessage,relatedCategoryLinks,categoryCalculatorHref,activeBlogCategory,blogOverflow,blogShellWidth,comparisonsH1,comparisonChildCards,comparisonChildHrefs,comparisonsCanonical,comparisonsArticleCards,comparisonsSchemaTypes,childH1,childCanonical,childBreadcrumb,childRelatedHrefs,childArticleCards,childOverflow});
   await page.close();
 }
 const tabletPage=await browser.newPage({viewport:{width:820,height:1000}});
