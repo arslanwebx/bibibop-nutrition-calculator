@@ -233,6 +233,25 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
 .empty-result svg { margin-inline: auto; }
 .mobile-summary { display: none; }
 
+/* Homepage Calculator Showcase */
+.tools-showcase { padding: 82px 0; background: linear-gradient(180deg,#fff 0%,#fffaf5 100%); border-bottom: 1px solid var(--border); }
+.showcase-heading { max-width: 760px; margin: 0 auto 34px; text-align: center; }
+.showcase-heading h2 { margin: 0 0 12px; font-size: clamp(2rem,4vw,3rem); }
+.showcase-heading > p:last-child { color: var(--muted); font-size: 1rem; }
+.showcase-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
+.showcase-card { position: relative; min-height: 205px; display: flex; flex-direction: column; padding: 24px 58px 24px 24px; border: 1px solid #fed7aa; border-radius: 18px; background: white; color: var(--ink); text-decoration: none; box-shadow: 0 8px 24px rgba(154,52,18,.06); transition: transform .2s ease,border-color .2s ease,box-shadow .2s ease; }
+.showcase-card:hover { border-color: #fb923c; color: var(--ink); transform: translateY(-3px); box-shadow: 0 16px 34px rgba(154,52,18,.12); }
+.showcase-card-title { display: flex; align-items: center; gap: 15px; }
+.showcase-card h3 { margin: 0; font-size: 1.2rem; text-align: left; letter-spacing: -.02em; }
+.showcase-card p { margin: 18px 0 0; color: var(--muted); font-size: .83rem; line-height: 1.65; }
+.showcase-icon { width: 58px; height: 58px; display: grid; place-items: center; flex: 0 0 auto; border-radius: 50%; background: #ffedd5; color: var(--orange); }
+.showcase-icon svg { width: 34px; height: 34px; fill: currentColor; }
+.showcase-icon.icon-macro-calculator,.showcase-icon.icon-tdee-calculator { background: #ecfdf3; color: #15803d; }
+.showcase-icon.icon-carb-calculator { background: #fffbeb; color: #d97706; }
+.showcase-arrow { position: absolute; right: 22px; bottom: 24px; width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; background: var(--orange); color: white; font-size: 1.3rem; transition: transform .2s ease,background .2s ease; }
+.showcase-card:hover .showcase-arrow { background: var(--orange-dark); transform: translateX(2px); }
+.showcase-all-link { width: fit-content; margin: 30px auto 0; gap: 8px; }
+
 /* Editorial Content */
 .article { max-width: 1280px; }
 .jump-links {
@@ -439,6 +458,7 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
   .health-calculator { grid-template-columns: 1fr; }
   .health-results { position: static; }
   .callout-grid, .example-grid { grid-template-columns: 1fr 1fr; }
+  .showcase-grid { grid-template-columns: 1fr 1fr; }
   .filters { grid-template-columns: 1fr 1fr; }
   .filters label:first-child { grid-column: 1 / -1; }
   .jump-links { grid-template-columns: 1fr 1fr; }
@@ -465,6 +485,7 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
   .stat-protein { right: -2px; }
   .stat-items { left: -2px; }
   .section { padding: 62px 0; }
+  .tools-showcase { padding: 62px 0; }
   .builder, .results { border-radius: 16px; }
   .size-toggle { grid-template-columns: 1fr; }
   .picker-row { grid-template-columns: 1fr; }
@@ -473,7 +494,9 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
   .actions button { width: 100%; }
   .macro-grid { grid-template-columns: repeat(3, 1fr); }
   .health-field-grid, .health-field-grid.custom-macros, .related-tool-grid, .calculator-directory { grid-template-columns: 1fr; }
-  .callout-grid, .example-grid, .filters, .footer-grid { grid-template-columns: 1fr; }
+  .callout-grid, .example-grid, .showcase-grid, .filters, .footer-grid { grid-template-columns: 1fr; }
+  .showcase-card { min-height: 180px; padding: 20px 54px 20px 20px; }
+  .showcase-icon { width: 52px; height: 52px; }
   .jump-links { grid-template-columns: 1fr; }
   .filters label:first-child { grid-column: auto; }
   .footer-grid { gap: 32px; text-align: center; }
