@@ -5,23 +5,24 @@ const checks=[];
 for(const viewport of [{name:"desktop",width:1440,height:1000},{name:"mobile",width:390,height:844}]){
   const page=await browser.newPage({viewport:{width:viewport.width,height:viewport.height}});
   await page.goto("http://127.0.0.1:3005/nutrition-calculators/macro-calculator/",{waitUntil:"networkidle"});
-  const summary=page.locator('nav[aria-label="Main navigation"] .nav-dropdown-label');
+  const summary=page.locator(".nav-dropdown:not(.blog-nav-dropdown) .nav-dropdown-label");
+  const calculatorMenu=page.locator("#calculator-menu");
   const directoryHref=await summary.getAttribute("href");
   const nutritionFactsHref=await page.getByRole("link",{name:"Nutrition Facts",exact:true}).first().getAttribute("href");
-  const visibleBeforeInteraction=await page.locator(".nav-dropdown-menu").isVisible();
+  const visibleBeforeInteraction=await calculatorMenu.isVisible();
   if(viewport.name==="mobile"){
     await page.getByRole("button",{name:/Menu/}).click();
     await page.getByRole("button",{name:"Toggle calculator links"}).click();
   }else await summary.hover();
-  const dropdownLinks=await page.locator(".nav-dropdown-menu a").count();
-  const dropdownVisible=await page.locator(".nav-dropdown-menu").isVisible();
+  const dropdownLinks=await calculatorMenu.locator("a").count();
+  const dropdownVisible=await calculatorMenu.isVisible();
   let closesAfterMouseLeave=null;
   if(viewport.name==="desktop"){
     await page.mouse.move(10,500);
-    closesAfterMouseLeave=!(await page.locator(".nav-dropdown-menu").isVisible());
+    closesAfterMouseLeave=!(await calculatorMenu.isVisible());
   }
-  const summaryBox=await page.locator(".nav-dropdown-trigger").boundingBox();
-  const chevronBox=await page.locator(".dropdown-chevron").boundingBox();
+  const summaryBox=await page.locator(".nav-dropdown:not(.blog-nav-dropdown) .nav-dropdown-trigger").boundingBox();
+  const chevronBox=await page.locator(".nav-dropdown:not(.blog-nav-dropdown) .dropdown-chevron").boundingBox();
   const chevronAlignment=summaryBox&&chevronBox?Math.abs((summaryBox.y+summaryBox.height/2)-(chevronBox.y+chevronBox.height/2)):null;
   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
   const firstResult=page.locator(".health-result.primary strong");
@@ -56,8 +57,46 @@ for(const viewport of [{name:"desktop",width:1440,height:1000},{name:"mobile",wi
   await page.getByPlaceholder("Search item or alias").fill("steak");
   const filteredTableRows=await page.locator(".nutrition-table tbody tr").count();
 
-  checks.push({viewport:viewport.name,directoryHref,nutritionFactsHref,dropdownLinks,visibleBeforeInteraction,dropdownVisible,closesAfterMouseLeave,overflow,liveResultChanged:before!==after,minimumControlHeight:Math.min(...controls),chevronAlignment,proteinRange,proteinOverflow,calculatorWidth,homepageFullTable,summaryRows,fullDatabaseHref,showcaseCards,showcaseColumns,allCalculatorsHref,showcaseOrder,buttonOffset,factsHeading,tableCaption,tableRows,categoryLinks,factsOverflow,filteredTableRows});
+  await page.goto("http://127.0.0.1:3005/blog/",{waitUntil:"networkidle"});
+  const blogTitle=await page.title();
+  const blogCanonical=await page.locator('link[rel="canonical"]').getAttribute("href");
+  const blogH1=await page.locator("h1").count();
+  const blogCards=await page.locator(".blog-category-card").count();
+  const blogColumns=await page.locator(".blog-category-grid").evaluate(node=>getComputedStyle(node).gridTemplateColumns.split(" ").length);
+  const blogCategoryHrefs=await page.locator(".blog-category-card > a").evaluateAll(nodes=>nodes.map(node=>node.getAttribute("href")));
+  const blogEmptyMessage=await page.locator(".blog-empty-state").textContent();
+  const blogNavLabel=page.locator(".blog-nav-dropdown .nav-dropdown-label");
+  const blogMenuVisibleBefore=await page.locator("#blog-menu").isVisible();
+  if(viewport.name==="mobile"){
+    await page.getByRole("button",{name:/Menu/}).click();
+    await page.getByRole("button",{name:"Toggle blog categories"}).click();
+  }else await blogNavLabel.hover();
+  const blogMenuVisible=await page.locator("#blog-menu").isVisible();
+  const blogMenuLinks=await page.locator("#blog-menu a").count();
+  let blogKeyboardFocus=null;
+  if(viewport.name==="desktop"){
+    await page.mouse.move(10,500);
+    await blogNavLabel.focus();
+    await page.keyboard.press("Tab");
+    await page.keyboard.press("Tab");
+    blogKeyboardFocus=await page.evaluate(()=>document.activeElement?.textContent?.trim());
+  }
+  await page.goto("http://127.0.0.1:3005/blog/nutrition-guides/",{waitUntil:"networkidle"});
+  const categoryH1=await page.locator("h1").count();
+  const categoryCanonical=await page.locator('link[rel="canonical"]').getAttribute("href");
+  const categoryNoindex=await page.locator('meta[name="robots"][content*="noindex"]').count();
+  const categoryEmptyMessage=await page.locator(".blog-empty-state").textContent();
+  const relatedCategoryLinks=await page.locator(".related-category-grid a").count();
+  const categoryCalculatorHref=await page.locator(".blog-calculator-cta a").getAttribute("href");
+  const activeBlogCategory=await page.locator("#blog-menu a[aria-current='page']").textContent();
+  const blogOverflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
+
+  checks.push({viewport:viewport.name,directoryHref,nutritionFactsHref,dropdownLinks,visibleBeforeInteraction,dropdownVisible,closesAfterMouseLeave,overflow,liveResultChanged:before!==after,minimumControlHeight:Math.min(...controls),chevronAlignment,proteinRange,proteinOverflow,calculatorWidth,homepageFullTable,summaryRows,fullDatabaseHref,showcaseCards,showcaseColumns,allCalculatorsHref,showcaseOrder,buttonOffset,factsHeading,tableCaption,tableRows,categoryLinks,factsOverflow,filteredTableRows,blogTitle,blogCanonical,blogH1,blogCards,blogColumns,blogCategoryHrefs,blogEmptyMessage,blogMenuVisibleBefore,blogMenuVisible,blogMenuLinks,blogKeyboardFocus,categoryH1,categoryCanonical,categoryNoindex,categoryEmptyMessage,relatedCategoryLinks,categoryCalculatorHref,activeBlogCategory,blogOverflow});
   await page.close();
 }
+const tabletPage=await browser.newPage({viewport:{width:820,height:1000}});
+await tabletPage.goto("http://127.0.0.1:3005/blog/",{waitUntil:"networkidle"});
+checks.push({viewport:"tablet-blog",blogColumns:await tabletPage.locator(".blog-category-grid").evaluate(node=>getComputedStyle(node).gridTemplateColumns.split(" ").length),overflow:await tabletPage.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth),wideElements:await tabletPage.evaluate(()=>[...document.querySelectorAll("body *")].map(node=>({tag:node.tagName,className:typeof node.className==="string"?node.className:"",right:node.getBoundingClientRect().right,width:node.getBoundingClientRect().width})).filter(item=>item.right>document.documentElement.clientWidth+.5).slice(0,12))});
+await tabletPage.close();
 await browser.close();
 console.log(JSON.stringify(checks,null,2));

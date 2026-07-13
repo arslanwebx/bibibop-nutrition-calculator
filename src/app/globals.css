@@ -81,6 +81,7 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
   padding: 10px 13px; border-radius: 10px;
 }
 .nav a:hover { background: var(--surface); color: var(--orange-dark); }
+.nav > a[aria-current="page"],.nav-dropdown.current > .nav-dropdown-trigger { background: var(--orange-soft); color: var(--orange-dark); }
 .nav .nav-cta { margin-left: 5px; background: var(--orange); color: white; padding-inline: 18px; }
 .nav .nav-cta:hover { background: var(--orange-dark); color: white; }
 .nav-dropdown { position: relative; }
@@ -98,8 +99,10 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
 .nav-dropdown.open > .nav-dropdown-menu { display: block; }
 .nav .nav-dropdown-menu a { display: block; padding: 9px 11px; font-size: .78rem; line-height: 1.35; }
 .nav .nav-dropdown-menu a strong { color: var(--orange-dark); }
+.nav .nav-dropdown-menu a[aria-current="page"] { background: var(--orange-soft); color: var(--orange-dark); }
 .nav .nav-dropdown-menu .nav-dropdown-all { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 7px; padding-top: 12px; border-top: 1px solid var(--border); border-radius: 0 0 8px 8px; color: var(--orange-dark); font-weight: 750; }
-@media (hover: hover) and (min-width: 801px) {
+.blog-dropdown-menu { width: 245px; }
+@media (hover: hover) and (min-width: 841px) {
   .nav-dropdown:hover > .nav-dropdown-menu, .nav-dropdown:focus-within > .nav-dropdown-menu { display: block; }
   .nav-dropdown:hover .dropdown-chevron, .nav-dropdown:focus-within .dropdown-chevron { transform: rotate(225deg); }
 }
@@ -321,6 +324,9 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
 .byline { color: var(--muted); font-size: .84rem; }
 .blog-article-body { max-width: 780px; margin: 0 auto 60px; }
 .blog-article-body h2 { margin-top: 52px; }
+.article-next-links { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 46px; padding-top: 24px; border-top: 1px solid var(--border); }
+.article-next-links a { min-height: 48px; display: flex; align-items: center; justify-content: center; padding: 11px 14px; border: 1px solid var(--border); border-radius: 11px; color: var(--ink); font-size: .8rem; font-weight: 700; text-align: center; text-decoration: none; }
+.article-next-links a:hover { border-color: #fdba74; background: #fffaf5; color: var(--orange-dark); }
 
 /* Nutrition Table */
 .filters { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; gap: 10px; margin-bottom: 15px; }
@@ -405,6 +411,53 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
 .empty-state { padding: 42px 20px; text-align: center; }
 .empty-state svg { width: min(260px, 80%); height: auto; margin-inline: auto; }
 
+/* Blog Hub And Category Archives */
+.blog-shell { max-width: 1180px; }
+.blog-hub-header,.blog-category-header { max-width: 800px; margin: 34px auto 46px; text-align: center; }
+.blog-hub-header h1,.blog-category-header h1 { margin: 0 0 15px; font-size: clamp(2.3rem,5vw,3.8rem); line-height: 1.1; }
+.blog-hub-header .lede,.blog-category-header .lede { margin-inline: auto; }
+.blog-category-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 16px; }
+.blog-category-card { min-height: 335px; display: flex; flex-direction: column; padding: 24px; border: 1px solid var(--border); border-radius: 18px; background: white; box-shadow: 0 5px 16px rgba(17,24,39,.045); transition: transform .2s ease,border-color .2s ease,box-shadow .2s ease; }
+.blog-category-card:hover { border-color: #fdba74; transform: translateY(-2px); box-shadow: 0 9px 22px rgba(154,52,18,.08); }
+.blog-category-icon { width: 54px; height: 54px; display: grid; place-items: center; flex: 0 0 auto; border-radius: 15px; background: var(--orange-soft); color: var(--orange); }
+.blog-category-icon svg { width: 31px; height: 31px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.blog-category-card:nth-child(2) .blog-category-icon,.blog-category-card:nth-child(4) .blog-category-icon { background: #ecfdf3; color: #15803d; }
+.blog-category-card h2 { margin: 20px 0 10px; font-size: 1.2rem; text-align: left; }
+.blog-category-card p { margin: 0 0 22px; color: var(--muted); font-size: .82rem; line-height: 1.65; }
+.blog-category-card > a { width: fit-content; min-height: 44px; display: inline-flex; align-items: center; gap: 7px; margin-top: auto; color: var(--orange-dark); font-size: .82rem; font-weight: 750; text-decoration: none; }
+.blog-category-card > a:hover span { transform: translateX(2px); }
+.blog-category-card > a span { transition: transform .2s ease; }
+.latest-articles,.category-article-area,.related-blog-categories,.blog-calculator-cta { margin-top: 64px; padding: clamp(24px,4vw,38px); border: 1px solid var(--border); border-radius: 20px; background: white; box-shadow: var(--shadow-sm); }
+.blog-section-heading { max-width: 720px; margin: 0 auto 24px; text-align: center; }
+.blog-section-heading h2 { margin: 0 0 8px; font-size: clamp(1.65rem,3vw,2.2rem); }
+.blog-section-heading p { margin: 0; color: var(--muted); }
+.blog-empty-state { max-width: 620px; margin: 0 auto; padding: 25px 18px; border: 1px dashed #fdba74; border-radius: 14px; background: #fffaf5; text-align: center; }
+.blog-empty-state svg { width: 112px; height: auto; margin: 0 auto 10px; }
+.blog-empty-state svg rect { fill: white; stroke: #fed7aa; stroke-width: 3; }
+.blog-empty-state svg path { fill: none; stroke: #15803d; stroke-width: 5; stroke-linecap: round; }
+.blog-empty-state svg circle { fill: var(--orange); }
+.blog-empty-state p { margin: 0; color: var(--ink); font-weight: 600; }
+.blog-post-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
+.blog-post-card { display: flex; flex-direction: column; padding: 22px; border: 1px solid var(--border); border-radius: 15px; }
+.blog-post-card h3 { margin: 0 0 10px; font-size: 1.08rem; }
+.blog-post-card h3 a { color: var(--ink); text-decoration: none; }
+.blog-post-card p { color: var(--muted); font-size: .82rem; }
+.blog-post-meta { display: flex; flex-wrap: wrap; gap: 8px 14px; color: var(--muted); font-size: .7rem; }
+.blog-read-link { width: fit-content; min-height: 44px; display: inline-flex; align-items: center; gap: 6px; margin-top: auto; color: var(--orange-dark); font-size: .8rem; font-weight: 700; text-decoration: none; }
+.archive-pagination { display: flex; justify-content: center; gap: 8px; margin-top: 28px; }
+.archive-pagination a { min-width: 44px; min-height: 44px; display: grid; place-items: center; border: 1px solid var(--border); border-radius: 9px; color: var(--ink); text-decoration: none; }
+.archive-pagination a[aria-current="page"] { border-color: var(--orange); background: var(--orange-soft); color: var(--orange-dark); font-weight: 750; }
+.blog-category-header > .blog-category-icon { margin: 0 auto 18px; }
+.related-category-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+.related-category-grid a { min-height: 96px; display: flex; align-items: center; gap: 13px; padding: 16px; border: 1px solid var(--border); border-radius: 14px; color: var(--ink); font-weight: 700; text-decoration: none; }
+.related-category-grid a:hover { border-color: #fdba74; background: #fffaf5; }
+.related-category-grid .blog-category-icon { width: 45px; height: 45px; border-radius: 12px; }
+.related-category-grid .blog-category-icon svg { width: 25px; height: 25px; }
+.all-guides-link { display: table; min-height: 44px; margin: 20px auto 0; padding: 11px 14px; color: var(--orange-dark); font-weight: 700; }
+.blog-calculator-cta { text-align: center; background: linear-gradient(135deg,#fff7ed,#fff); }
+.blog-calculator-cta h2 { margin: 0 0 10px; }
+.blog-calculator-cta p { max-width: 670px; margin: 0 auto 20px; color: var(--muted); }
+
 /* Supporting Health Calculators */
 .page-content:has(.health-calculator), .page-content:has(.calculator-directory) { max-width: 860px; }
 .calculator-answer { margin: 0 0 24px; padding: 16px 18px; border-left: 4px solid var(--orange); border-radius: 0 12px 12px 0; background: var(--orange-soft); }
@@ -475,9 +528,12 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
   .calculator-grid { grid-template-columns: minmax(0, 1fr) 340px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .comparison-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .blog-category-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .blog-category-card { min-height: 290px; }
+  .blog-post-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 840px) {
   .shell { width: min(100% - 28px, 1280px); }
   .header-inner { min-height: 72px; }
   .menu-button { display: inline-flex; align-items: center; }
@@ -495,6 +551,7 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
   .nav-dropdown-menu { position: static; width: 100%; padding: 5px 0 0; border: 0; box-shadow: none; transform: none; }
   .nav .nav-dropdown-menu a { min-height: 42px; padding: 8px 12px; }
   .nav .nav-cta { margin-left: 0; }
+  .nav-dropdown.current > .nav-dropdown-trigger { background: var(--orange-soft); }
   .hero { padding: 54px 0 45px; }
   .hero-grid { grid-template-columns: 1fr; text-align: center; }
   .hero-copy { margin-inline: auto; }
@@ -519,6 +576,7 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
   }
   .mobile-summary strong { display: block; font-size: .92rem; }
   .article h2, .page-content h2 { margin-top: 58px; }
+  .related-category-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 600px) {
@@ -557,6 +615,12 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
   .comparison-card { min-height: 160px; }
   .category-summary-table { min-width: 660px; }
   .home-nutrition-summary .table-wrap { overflow-x: auto; }
+  .blog-hub-header,.blog-category-header { margin: 27px auto 34px; }
+  .blog-category-grid,.blog-post-grid,.related-category-grid { grid-template-columns: 1fr; }
+  .article-next-links { grid-template-columns: 1fr; }
+  .blog-category-card { min-height: 0; padding: 21px; }
+  .latest-articles,.category-article-area,.related-blog-categories,.blog-calculator-cta { margin-top: 38px; padding: 22px 17px; border-radius: 16px; }
+  .related-category-grid a { min-height: 82px; }
   .filters label:first-child { grid-column: auto; }
   .footer-grid { gap: 32px; text-align: center; }
   .footer-heading { text-align: center; }

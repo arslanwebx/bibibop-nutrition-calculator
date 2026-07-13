@@ -1,3 +1,18 @@
-import type {Metadata} from "next";import Link from "next/link";import PageShell from "@/components/content/PageShell";
-export const metadata:Metadata={title:"Nutrition Guides",description:"Future evidence-based BIBIBOP nutrition guides.",robots:{index:false,follow:true},alternates:{canonical:"/blog/"}};
-export default function Page(){return <PageShell title="Nutrition guides" description="There are no published articles yet."><div className="empty-state"><svg viewBox="0 0 240 170" aria-hidden="true"><rect x="35" y="20" width="170" height="130" rx="12" fill="#fff8f1" stroke="#e8ded4" strokeWidth="4"/><path d="M64 57h70M64 80h110M64 103h95" stroke="#3f7d5a" strokeWidth="7" strokeLinecap="round"/><circle cx="177" cy="55" r="17" fill="#f97316"/></svg><h2>Careful guides will be added later</h2><p>We will publish only when an article has useful, source-checked information. There are no placeholder posts or invented previews.</p><Link className="button" href="/#calculator">Use the active calculator</Link></div></PageShell>}
+import type {Metadata} from "next";
+import Link from "next/link";
+import BlogArchiveList from "@/components/content/BlogArchiveList";
+import BlogCategoryIcon from "@/components/content/BlogCategoryIcon";
+import {blogCategories,blogCategoryHref} from "@/data/blog-categories";
+import {blogPosts} from "@/data/blog-posts";
+import {siteConfig} from "@/config/site";
+
+const pageUrl=`${siteConfig.url}/blog/`;
+export const metadata:Metadata={title:"BIBIBOP Nutrition Guides, Ordering Tips and Comparisons",description:"Explore BIBIBOP nutrition guides, ordering tips, ingredient comparisons, and simple restaurant nutrition education.",alternates:{canonical:"/blog/"},openGraph:{title:"BIBIBOP Nutrition Guides, Ordering Tips and Comparisons",description:"Explore BIBIBOP nutrition guides, ordering tips, ingredient comparisons, and simple restaurant nutrition education.",url:pageUrl,type:"website"}};
+
+export default function BlogPage(){const latest=[...blogPosts].sort((a,b)=>b.publishedDate.localeCompare(a.publishedDate));const breadcrumb={"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:[{"@type":"ListItem",position:1,name:"Home",item:siteConfig.url},{"@type":"ListItem",position:2,name:"Blog",item:pageUrl}]};return <>
+  <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(breadcrumb).replace(/</g,"\\u003c")}}/>
+  <div className="content-page blog-hub-page"><div className="shell blog-shell"><nav className="breadcrumbs" aria-label="Breadcrumb"><Link href="/">Home</Link><span aria-hidden="true">/</span><span aria-current="page">Blog</span></nav><header className="blog-hub-header"><h1>BIBIBOP Nutrition Guides</h1><p className="lede">Explore clear, source-conscious guidance for understanding BIBIBOP nutrition, customizing an order, reading restaurant nutrition data, and comparing menu choices.</p></header>
+  <section className="blog-category-grid" aria-label="Blog categories">{blogCategories.map(category=><article className="blog-category-card" key={category.slug}><BlogCategoryIcon type={category.icon}/><h2>{category.name}</h2><p>{category.description}</p><Link href={blogCategoryHref(category.slug)}>View Guides <span aria-hidden="true">→</span></Link></article>)}</section>
+  <section className="latest-articles"><div className="blog-section-heading"><h2>Latest Articles</h2><p>New articles will appear here only after they are written, reviewed, and published.</p></div><BlogArchiveList posts={latest} basePath="/blog/" emptyMessage="New BIBIBOP nutrition guides will be published soon."/></section>
+  </div></div>
+  </>}

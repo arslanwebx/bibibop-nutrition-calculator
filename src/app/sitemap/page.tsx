@@ -8,6 +8,10 @@ const names:Record<string,string>={
   "/":"BIBIBOP Nutrition Calculator",
   "/bibibop-nutrition-facts/":"BIBIBOP Nutrition Facts And Menu Calories",
   "/blog/":"Nutrition Guides",
+  "/blog/nutrition-guides/":"BIBIBOP Nutrition Guides",
+  "/blog/ordering-guides/":"BIBIBOP Ordering Guides",
+  "/blog/nutrition-education/":"Nutrition Education",
+  "/blog/comparisons/":"BIBIBOP Nutrition Comparisons",
   "/nutrition-calculators/":"Nutrition Calculators",
   "/nutrition-calculators/calorie-calculator/":"Calorie Calculator",
   "/nutrition-calculators/macro-calculator/":"Macro Calculator",
@@ -21,4 +25,4 @@ const names:Record<string,string>={
   "/about/":"About","/contact/":"Contact","/editorial-policy/":"Editorial Policy","/corrections-policy/":"Corrections Policy","/privacy-policy/":"Privacy Policy","/cookie-policy/":"Cookie Policy","/terms/":"Terms Of Use","/medical-disclaimer/":"Medical Disclaimer","/trademark-disclaimer/":"Trademark Disclaimer","/advertising-disclosure/":"Advertising Disclosure","/accessibility/":"Accessibility","/author/m-arslan/":"M. Arsalan - Author","/sitemap/":"Sitemap",
 };
 
-export default function Page(){return <PageShell title="Sitemap" description="Browse calculators, source documentation, contact options, and site policies."><ul>{allHumanRoutes.map(route=><li key={route}><Link href={route}>{names[route]}</Link></li>)}</ul><p>The empty Nutrition Guides archive appears here for people but remains excluded from the XML sitemap while it is set to noindex.</p></PageShell>}
+export default function Page(){return <PageShell title="Sitemap" description="Browse calculators, nutrition guides, source documentation, contact options, and site policies."><ul>{allHumanRoutes.map(route=><li key={route}><Link href={route}>{names[route]}</Link></li>)}</ul></PageShell>}
