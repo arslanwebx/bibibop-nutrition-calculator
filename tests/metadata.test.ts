@@ -4,7 +4,7 @@ import {blogCategories,blogCategoryHref} from "@/data/blog-categories";
 
 describe("site configuration",()=>{
   it("uses required exact metadata",()=>{
-    expect(siteConfig.title).toBe("BIBIBOP Nutrition Calculator: Calories, Macros & Allergens");
+    expect(siteConfig.title).toBe("BIBIBOP Nutrition Calculator [Calories, Macros & Allergens]");
     expect(siteConfig.description).toBe("Build your BIBIBOP bowl and calculate calories, protein, carbs, fat, sodium and allergens using official nutrition data for every ingredient.");
     expect(siteConfig.url).toBe("https://bibibopnutritioncalculator.pro");
   });
