@@ -23,7 +23,7 @@ export default async function CalculatorPage({params}:{params:Promise<{slug:stri
   return <>
     {jsonLd.map((data,index)=><script key={index} type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(data).replace(/</g,"\\u003c")}}/>)}
     <PageShell title={tool.name} description={tool.shortDescription}>
-      <p className="calculator-answer"><strong>Answer:</strong> {copy.answer}</p>
+      <p className="calculator-answer">{copy.answer}</p>
       <HealthCalculator type={slug}/>
       <p className="calculator-review">Method and limitations reviewed by <Link href="/author/m-arslan/">M. Arsalan</Link>. Last reviewed July 12, 2026.</p>
       <div className="calculator-article">{copy.sections.map(section=><section key={section.heading}><h2>{section.heading}</h2>{section.body}</section>)}</div>
