@@ -85,19 +85,25 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
 .nav .nav-cta:hover { background: var(--orange-dark); color: white; }
 .nav-dropdown { position: relative; }
 .nav-dropdown summary {
-  min-height: 44px; display: flex; align-items: center; gap: 6px; padding: 10px 13px;
+  min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 13px;
   border-radius: 10px; color: var(--ink); font-size: .9rem; font-weight: 600; cursor: pointer; list-style: none;
 }
 .nav-dropdown summary::-webkit-details-marker { display: none; }
 .nav-dropdown summary:hover, .nav-dropdown[open] summary { background: var(--surface); color: var(--orange-dark); }
-.nav-dropdown summary span { transition: transform .2s ease; }
-.nav-dropdown[open] summary span { transform: rotate(180deg); }
+.dropdown-chevron { width: 7px; height: 7px; border-right: 1.7px solid currentColor; border-bottom: 1.7px solid currentColor; transform: rotate(45deg); transform-origin: 65% 65%; transition: transform .18s ease; }
+.nav-dropdown[open] .dropdown-chevron { transform: rotate(225deg); }
 .nav-dropdown-menu {
-  position: absolute; top: calc(100% + 9px); left: 50%; z-index: 50; width: 300px; padding: 10px;
+  position: absolute; top: 100%; left: 50%; z-index: 50; width: 300px; padding: 10px;
   border: 1px solid var(--border); border-radius: 14px; background: white; box-shadow: var(--shadow-md); transform: translateX(-50%);
 }
 .nav .nav-dropdown-menu a { display: block; padding: 9px 11px; font-size: .78rem; line-height: 1.35; }
 .nav .nav-dropdown-menu a strong { color: var(--orange-dark); }
+@media (hover: hover) and (min-width: 801px) {
+  .nav-dropdown:not([open]) > .nav-dropdown-menu { display: none; }
+  .nav-dropdown:hover > .nav-dropdown-menu, .nav-dropdown:focus-within > .nav-dropdown-menu { display: block; }
+  .nav-dropdown:hover > summary, .nav-dropdown:focus-within > summary { background: var(--surface); color: var(--orange-dark); }
+  .nav-dropdown:hover .dropdown-chevron, .nav-dropdown:focus-within .dropdown-chevron { transform: rotate(225deg); }
+}
 .menu-button {
   display: none; min-height: 44px; padding: 0 14px; border: 1px solid var(--border);
   border-radius: 10px; background: white; color: var(--ink); font-weight: 650; cursor: pointer;
@@ -343,10 +349,13 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
 .unit-toggle label { display: flex; align-items: center; justify-content: center; gap: 7px; min-height: 46px; border: 1px solid var(--border); border-radius: 10px; color: var(--ink); cursor: pointer; }
 .unit-toggle label:has(input:checked) { border-color: var(--orange); background: var(--orange-soft); color: #9a3412; font-weight: 650; }
 .unit-toggle input { accent-color: var(--orange); }
+.calculator-method { margin-bottom: 22px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
 .health-field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.health-field-grid.custom-macros { grid-template-columns: repeat(3,1fr); }
 .health-field, .health-field-grid label { display: block; margin-bottom: 15px; color: var(--ink); font-size: .84rem; font-weight: 700; }
 .health-field input, .health-field select, .health-field-grid input, .health-field-grid select { width: 100%; min-height: 48px; margin-top: 6px; padding: .65rem .8rem; border: 1px solid #d1d5db; border-radius: 10px; background: white; color: var(--ink); }
 .health-form-note { margin: 5px 0 0; color: var(--muted); font-size: .75rem; }
+.health-inline-error { margin: -2px 0 14px; padding: 10px 12px; border-radius: 9px; background: #fef2f2; color: #991b1b; font-size: .75rem; }
 .health-result-list { display: grid; gap: 9px; margin-top: 16px; }
 .health-result { padding: 12px; border-radius: 11px; background: var(--surface); text-align: center; }
 .health-result span, .health-result strong { display: block; }
@@ -459,7 +468,7 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
   .actions { flex-direction: column; }
   .actions button { width: 100%; }
   .macro-grid { grid-template-columns: repeat(3, 1fr); }
-  .health-field-grid, .related-tool-grid, .calculator-directory { grid-template-columns: 1fr; }
+  .health-field-grid, .health-field-grid.custom-macros, .related-tool-grid, .calculator-directory { grid-template-columns: 1fr; }
   .callout-grid, .example-grid, .filters, .footer-grid { grid-template-columns: 1fr; }
   .jump-links { grid-template-columns: 1fr; }
   .filters label:first-child { grid-column: auto; }
