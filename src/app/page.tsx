@@ -6,6 +6,7 @@ import { siteConfig } from "@/config/site";
 import Link from "next/link";
 import AuthorBox from "@/components/content/AuthorBox";
 import CalculatorShowcase from "@/components/content/CalculatorShowcase";
+import HomeBlogShowcase from "@/components/content/HomeBlogShowcase";
 
 const faqs=[
   ["How accurate is the BIBIBOP Nutrition Calculator?","It totals the values in BIBIBOP's downloadable nutrition sheet. The arithmetic is consistent with that source, but hand portions, substitutions, recipe changes, and location practices can make an actual meal different."],
@@ -47,5 +48,6 @@ export default function Home(){const jsonLd=[{"@context":"https://schema.org","@
     <section className="faq-section"><h2 id="frequently-asked-questions">Frequently Asked Questions</h2><div className="faq">{faqs.map(([q,a])=><details key={q}><summary>{q}</summary><p>{a}</p></details>)}</div></section>
   </article></section>
   <CalculatorShowcase/>
+  <HomeBlogShowcase/>
   <section className="section section-white"><article className="shell article"><h2>A Practical Final Check</h2><p>The BIBIBOP nutrition calculator is best used as a transparent comparison tool. Build the order you expect, look beyond calories to protein, carbs, fat, sodium, and allergen flags, and note whether the status is Exact, Estimated, or Incomplete.</p><p>Save or print a summary when comparing two combinations. Include the itemized list so each calorie or macro difference can be traced to a specific ingredient and portion multiplier. If an allergy, medical condition, or precise intake target affects your decision, verify current restaurant information and seek qualified guidance where appropriate.</p></article><div className="shell homepage-author"><AuthorBox/></div></section>
   </>}
