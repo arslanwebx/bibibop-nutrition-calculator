@@ -21,8 +21,9 @@ for(const slug of slugs){
   const schemaTypes=schemas.map(item=>item["@type"]);const faq=schemas.find(item=>item["@type"]==="FAQPage");const article=schemas.find(item=>item["@type"]==="BlogPosting");
   const canonical=html.match(/rel="canonical" href="([^"]+)"/)?.[1];const robots=html.match(/name="robots" content="([^"]+)"/)?.[1];
   const body=html.match(/<div class="blog-article-body">([\s\S]*?)<section class="article-faq"/)?.[1]??"";const words=plainText(body).split(" ").filter(Boolean).length;
-  const visibleFaq=(html.match(/<details/g)??[]).length;const h1=(html.match(/<h1/g)??[]).length;
-  assert(h1===1,`${slug} has ${h1} H1 elements`);assert(canonical===`https://bibibopnutritioncalculator.pro/blog/${slug}/`,`${slug} canonical is incorrect`);assert(robots?.includes("index")&&robots.includes("follow"),`${slug} is not index, follow`);
+  const toc=html.match(/<details class="article-toc">[\s\S]*?<\/details>/)?.[0]??"";const tocNumbers=(toc.match(/class="toc-number"/g)??[]).length;
+  const faqSection=html.match(/<section class="article-faq"[\s\S]*?<\/section>/)?.[0]??"";const visibleFaq=(faqSection.match(/<details/g)??[]).length;const h1=(html.match(/<h1/g)??[]).length;
+  assert(h1===1,`${slug} has ${h1} H1 elements`);assert(toc.startsWith('<details class="article-toc"><summary>'),`${slug} TOC is not a closed disclosure`);assert(tocNumbers>=7,`${slug} TOC is not numbered`);assert(canonical===`https://bibibopnutritioncalculator.pro/blog/${slug}/`,`${slug} canonical is incorrect`);assert(robots?.includes("index")&&robots.includes("follow"),`${slug} is not index, follow`);
   for(const required of ["BlogPosting","BreadcrumbList","Person","Organization","FAQPage"])assert(schemaTypes.includes(required),`${slug} is missing ${required} schema`);
   assert(article?.url===canonical,`${slug} Article URL does not match canonical`);assert(faq?.mainEntity.length===visibleFaq,`${slug} visible and schema FAQs differ`);
   const localLinks=[...html.matchAll(/<a[^>]+href="(\/[^"]*)"/g)].map(match=>match[1]).filter(href=>!href.startsWith("//"));

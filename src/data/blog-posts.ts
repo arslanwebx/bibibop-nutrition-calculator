@@ -2,7 +2,7 @@ import {blogCategorySlugs,type BlogPrimaryCategorySlug} from "@/data/blog-catego
 
 export type BlogImage={src:string;alt:string;width:number;height:number;caption?:string};
 export type BlogFaq={question:string;answer:string};
-export type BlogTocItem={id:string;label:string};
+export type BlogTocItem={id:string;label:string;level:2|3|4};
 export type BlogPostSummary={
   id:string;
   slug:string;
@@ -39,7 +39,7 @@ export const blogPosts:BlogPostSummary[]=[
       {src:"/blog/portion-source-check.svg",alt:"Three-step diagram for checking serving size, source version, and calculated total",width:1000,height:560,caption:"Serving size and source date should be checked before two totals are compared."},
     ],
     relatedSlugs:["bibibop-proteins-compared","bibibop-menu-first-time-ordering-guide","calories-vs-macros-restaurant-bowl"],
-    toc:[{id:"quick-answer",label:"Quick answer"},{id:"how-totals-work",label:"How totals work"},{id:"sample-bowl",label:"Sample bowl"},{id:"nutrients",label:"Calories, macros, and sodium"},{id:"allergens",label:"Allergens and dietary flags"},{id:"data-limits",label:"Data limitations"},{id:"faq",label:"FAQs"}],
+    toc:[{id:"quick-answer",label:"Quick answer",level:2},{id:"how-totals-work",label:"How totals work",level:2},{id:"original-bowl-bibicup",label:"Original bowl and BIBICUP portions",level:3},{id:"sample-bowl",label:"Sample bowl",level:2},{id:"nutrients",label:"Calories, macros, and sodium",level:2},{id:"allergens",label:"Allergens and dietary flags",level:2},{id:"data-limits",label:"Data limitations",level:2},{id:"responsible-use",label:"Using the total responsibly",level:2},{id:"faq",label:"FAQs",level:2}],
     faq:[
       {question:"How many calories are in a BIBIBOP bowl?",answer:"There is no single calorie number for every BIBIBOP bowl. The total depends on the bowl size and each selected base, protein, topping, sauce, side, and drink portion."},
       {question:"Does the BIBIBOP nutrition PDF show Original Bowl portions?",answer:"The April 23, 2026 PDF lists ingredient portions and states that BIBICUP base calories use half portions. Check the note and portion beside each ingredient before comparing it with an older sheet."},
@@ -60,7 +60,7 @@ export const blogPosts:BlogPostSummary[]=[
       {src:"/blog/flavor-texture-map.svg",alt:"Flavor and texture map grouping fresh, savory, spicy, creamy, and crunchy bowl elements",width:1000,height:560,caption:"Use contrast, such as a fresh base with a warm protein and one bold sauce, to make a bowl feel intentional."},
     ],
     relatedSlugs:["bibibop-calories-and-nutrition-guide","bibibop-proteins-compared"],
-    toc:[{id:"order-sequence",label:"The ordering sequence"},{id:"choose-format",label:"Choose a format"},{id:"bases",label:"Pick a base"},{id:"proteins",label:"Choose a protein"},{id:"toppings-sauces",label:"Toppings and sauces"},{id:"example-orders",label:"Example orders"},{id:"allergy-check",label:"Dietary and allergy checks"},{id:"faq",label:"FAQs"}],
+    toc:[{id:"order-sequence",label:"The ordering sequence",level:2},{id:"choose-format",label:"Choose a format",level:2},{id:"split-base",label:"What a split base means",level:3},{id:"bases",label:"Pick a base",level:2},{id:"proteins",label:"Choose a protein",level:2},{id:"toppings-sauces",label:"Toppings and sauces",level:2},{id:"sauce-differences",label:"How the sauces differ",level:3},{id:"example-orders",label:"Example orders",level:2},{id:"fresh-savory-order",label:"Fresh and savory",level:3},{id:"warm-spicy-order",label:"Warm and spicy",level:3},{id:"plant-based-order",label:"Plant-based and textured",level:3},{id:"allergy-check",label:"Dietary and allergy checks",level:2},{id:"first-time-mistakes",label:"Common first-time mistakes",level:3},{id:"simple-first-order-plan",label:"A simple first-order plan",level:2},{id:"faq",label:"FAQs",level:2}],
     faq:[
       {question:"What do you choose first at BIBIBOP?",answer:"Start with the bowl format and base. Then choose a protein, hot and cold toppings, and a sauce. Sides and drinks are separate decisions."},
       {question:"Can a BIBIBOP bowl use more than one base?",answer:"Availability and ordering options can vary, but customizable bowl formats may allow a combination. Ask the restaurant how a split base affects portions before assuming it equals two full servings."},
@@ -81,7 +81,7 @@ export const blogPosts:BlogPostSummary[]=[
       {src:"/blog/equal-calorie-bowls.svg",alt:"Two equal-calorie bowl diagrams with different proportions of protein, carbohydrate, and fat",width:1000,height:560,caption:"Similar calorie totals can describe very different nutrient mixes."},
     ],
     relatedSlugs:["bibibop-calories-and-nutrition-guide","bibibop-proteins-compared","bibibop-vs-chipotle-nutrition-comparison"],
-    toc:[{id:"difference",label:"Calories and macros"},{id:"equal-calories",label:"Equal calories, different meals"},{id:"protein-per-calorie",label:"Protein per calorie"},{id:"sauces-portions",label:"Sauces and portions"},{id:"comparison-method",label:"A comparison method"},{id:"limits",label:"Restaurant data limits"},{id:"faq",label:"FAQs"}],
+    toc:[{id:"difference",label:"Calories and macros",level:2},{id:"equal-calories",label:"Equal calories, different meals",level:2},{id:"protein-per-calorie",label:"Protein per calorie",level:2},{id:"sauces-portions",label:"Sauces and portions",level:2},{id:"comparison-method",label:"A comparison method",level:2},{id:"limits",label:"Restaurant data limits",level:2},{id:"metric-matches-question",label:"Match the metric to the question",level:2},{id:"faq",label:"FAQs",level:2}],
     faq:[
       {question:"Are calories and macros the same thing?",answer:"No. Calories measure energy. Protein, carbohydrate, and fat are macronutrients that contribute energy and also describe the composition of the meal."},
       {question:"Can two bowls have the same calories but different macros?",answer:"Yes. One bowl may contain more protein and less fat, while another has more carbohydrate or fat, even when their rounded calorie totals are similar."},
@@ -102,7 +102,7 @@ export const blogPosts:BlogPostSummary[]=[
       {src:"/blog/protein-choice-path.svg",alt:"Decision path comparing higher protein, plant-based, lower listed calories, and lower listed sodium preferences",width:1000,height:560,caption:"The useful choice depends on the nutrient or dietary preference being prioritized."},
     ],
     relatedSlugs:["bibibop-calories-and-nutrition-guide","calories-vs-macros-restaurant-bowl","bibibop-menu-first-time-ordering-guide"],
-    toc:[{id:"current-options",label:"Current protein options"},{id:"comparison-table",label:"Nutrition table"},{id:"higher-protein",label:"Higher-protein choices"},{id:"lower-calorie-sodium",label:"Calories and sodium"},{id:"plant-based-allergens",label:"Plant-based and allergens"},{id:"version-change",label:"Source-version changes"},{id:"faq",label:"FAQs"}],
+    toc:[{id:"current-options",label:"Current protein options",level:2},{id:"comparison-table",label:"Nutrition table",level:2},{id:"higher-protein",label:"Higher-protein choices",level:2},{id:"lower-calorie-sodium",label:"Calories and sodium",level:2},{id:"plant-based-allergens",label:"Plant-based and allergens",level:2},{id:"version-change",label:"Source-version changes",level:2},{id:"match-protein-preference",label:"Match the protein to the preference",level:2},{id:"faq",label:"FAQs",level:2}],
     faq:[
       {question:"Which BIBIBOP protein has the most listed protein?",answer:"In the April 23, 2026 nutrition PDF, miso glazed salmon lists 27 grams of protein per 4-ounce portion, the highest of the seven proteins on that sheet."},
       {question:"Which BIBIBOP protein has the fewest listed calories?",answer:"Korean crispy chicken lists 140 calories per 5-ounce portion on the April 2026 sheet. Calories alone do not describe its sodium, protein, preparation, or overall bowl total."},
@@ -123,7 +123,7 @@ export const blogPosts:BlogPostSummary[]=[
       {src:"/blog/portion-variability.svg",alt:"Diagram showing how recipe version, serving scoop, and selected extras change restaurant bowl totals",width:1000,height:560,caption:"Published totals are useful planning figures, not measurements of a specific hand-built bowl."},
     ],
     relatedSlugs:["calories-vs-macros-restaurant-bowl","bibibop-calories-and-nutrition-guide","bibibop-menu-first-time-ordering-guide"],
-    toc:[{id:"fair-comparison",label:"How to compare fairly"},{id:"ordering-model",label:"Ordering models"},{id:"category-table",label:"Category comparison"},{id:"nutrition-context",label:"Calories, protein, and sodium"},{id:"dietary-allergen",label:"Dietary and allergen context"},{id:"data-transparency",label:"Data transparency"},{id:"which-fits",label:"Which may fit"},{id:"faq",label:"FAQs"}],
+    toc:[{id:"fair-comparison",label:"How to compare fairly",level:2},{id:"ordering-model",label:"Ordering models",level:2},{id:"category-table",label:"Category comparison",level:2},{id:"nutrition-context",label:"Calories, protein, and sodium",level:2},{id:"sodium-surprise",label:"Why sodium can surprise people",level:3},{id:"dietary-allergen",label:"Dietary and allergen context",level:2},{id:"data-transparency",label:"Data transparency",level:2},{id:"which-fits",label:"Which may fit",level:2},{id:"defined-meals",label:"Compare defined meals",level:2},{id:"faq",label:"FAQs",level:2}],
     faq:[
       {question:"Is BIBIBOP lower in calories than Chipotle?",answer:"Not automatically. Both restaurants allow many combinations, so calories depend on the chosen base, protein, toppings, sauces, extras, and portions. Compare complete builds rather than restaurant names."},
       {question:"Which restaurant has a vegan protein?",answer:"BIBIBOP lists tofu as vegan friendly, while Chipotle identifies Sofritas as vegan and vegetarian. Review each restaurant’s current ingredient and allergen information before ordering."},
