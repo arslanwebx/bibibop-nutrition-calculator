@@ -1,6 +1,6 @@
 # BIBIBOP Nutrition Calculator
 
-Production-ready independent nutrition calculator for `bibibopnutritioncalculator.pro`. The homepage statically renders a complete 62-row official-PDF dataset, interactive bowl calculator, original explanatory content, FAQ structured data, and nutrition table. Small Cloudflare Pages Functions deliver contact and newsletter forms through Resend, with optional Turnstile verification when keys are configured.
+Production-ready independent nutrition calculator - [bibibopnutritioncalculator.pro](https://bibibopnutritioncalculator.pro/). The homepage statically renders a complete 62-row official-PDF dataset, interactive bowl calculator, original explanatory content, FAQ structured data, and nutrition table. Small Cloudflare Pages Functions deliver contact and newsletter forms through Resend, with optional Turnstile verification when keys are configured.
 
 ## Stack
 
