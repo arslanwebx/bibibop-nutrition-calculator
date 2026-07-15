@@ -13,6 +13,7 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "verify:data": "node --experimental-strip-types scripts/verify-data.ts",
+    "verify:blog": "node scripts/verify-blog-output.mjs",
     "preview": "npx wrangler pages dev out"
   },
   "dependencies": {

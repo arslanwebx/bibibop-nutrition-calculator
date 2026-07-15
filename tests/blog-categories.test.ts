@@ -29,9 +29,25 @@ describe("blog category and flat URL architecture",()=>{
     expect(blogArticleHref("bibibop-vs-cava-nutrition-comparison")).toBe("/blog/bibibop-vs-cava-nutrition-comparison/");
     expect(blogArticleHref("bibibop-vs-cava-nutrition-comparison")).not.toContain("/comparisons/");
   });
-  it("uses unique category metadata and publishes no placeholder articles",()=>{
+  it("uses unique category metadata and publishes the five source-checked articles",()=>{
     expect(new Set(blogCategories.map(category=>category.metaTitle)).size).toBe(6);
     expect(new Set(blogCategories.map(category=>category.metaDescription)).size).toBe(6);
-    expect(blogPosts).toEqual([]);
+    expect(blogPosts).toHaveLength(5);
+    expect(blogPosts.map(post=>post.slug)).toEqual([
+      "bibibop-calories-and-nutrition-guide","bibibop-menu-first-time-ordering-guide","calories-vs-macros-restaurant-bowl","bibibop-proteins-compared","bibibop-vs-chipotle-nutrition-comparison",
+    ]);
+    expect(new Set(blogPosts.map(post=>post.seoTitle)).size).toBe(5);
+    expect(new Set(blogPosts.map(post=>post.metaDescription)).size).toBe(5);
+    expect(blogPosts.every(post=>post.featuredImage.width===1200&&post.featuredImage.height===675)).toBe(true);
+    expect(blogPosts.every(post=>post.inlineImages.length===2)).toBe(true);
+    expect(blogPosts.every(post=>post.faq.length>=4&&post.faq.length<=7)).toBe(true);
+    expect(blogPosts.every(post=>post.relatedSlugs.length>=2)).toBe(true);
+  });
+  it("places comparison posts in their child and derived parent archives",()=>{
+    const meal=blogPosts.find(post=>post.primaryCategory==="meal-comparisons")!;
+    const restaurant=blogPosts.find(post=>post.primaryCategory==="restaurant-comparisons")!;
+    expect(postsForBlogArchive(blogPosts,"comparisons")).toEqual(expect.arrayContaining([meal,restaurant]));
+    expect(postsForBlogArchive(blogPosts,"meal-comparisons")).toEqual([meal]);
+    expect(postsForBlogArchive(blogPosts,"restaurant-comparisons")).toEqual([restaurant]);
   });
 });
