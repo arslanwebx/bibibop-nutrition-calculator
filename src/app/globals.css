@@ -122,15 +122,15 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible {
 .menu-lines::after { position: absolute; top: 6px; }
 
 /* Hero */
-.hero { overflow: hidden; padding: 78px 0 70px; background: white; }
-.hero-grid { display: grid; grid-template-columns: 1.12fr .88fr; align-items: center; gap: 82px; }
-.hero-copy { max-width: 760px; }
-.hero-copy h1, .hero-copy .lede { text-align: left; }
+.hero { overflow: hidden; padding: 54px 0 32px; background: white; }
+.hero-grid { display: block; }
+.hero-copy { max-width: 760px; margin-inline: auto; text-align: center; }
+.hero-copy h1, .hero-copy .lede { text-align: center; }
 .hero h1 { margin: 0 0 24px; font-size: clamp(2.7rem, 4.6vw, 4.15rem); font-weight: 700; line-height: 1.1; letter-spacing: -.018em; }
 .hero h1 span { display: block; }
 .hero h1 .hero-brand { display: inline; color: var(--orange); }
 .lede { color: #4b5563; font-size: 1.08rem; line-height: 1.78; }
-.hero .lede { max-width: 650px; font-size: 1.14rem; }
+.hero .lede { max-width: 650px; margin: 0 auto; font-size: 1.14rem; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 30px 0; }
 .button, .button-secondary {
   display: inline-flex; align-items: center; justify-content: center; min-height: 48px;
