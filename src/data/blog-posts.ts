@@ -28,6 +28,50 @@ export const blogPostBySlug=(slug:string)=>blogPosts.find(post=>post.slug===slug
 
 export const blogPosts:BlogPostSummary[]=[
   {
+    id:"bibibop-menu-nutrition-facts",slug:"bibibop-menu-nutrition-facts",
+    title:"How to Read BIBIBOP Menu Nutrition Facts",seoTitle:"BIBIBOP Menu Nutrition Facts [Calories, Macros & Serving Sizes]",
+    metaDescription:"Learn how to read BIBIBOP menu nutrition facts, compare serving sizes, total a custom bowl, and interpret calories, macros, sodium and allergens.",description:"An explanatory guide to serving sizes, menu nutrition columns, and itemized BIBIBOP bowl totals.",
+    excerpt:"A practical way to read BIBIBOP nutrition information: check the serving, add the selected items, and keep calories, sodium, and allergens separate.",
+    publishedDate:"2026-07-21",updatedDate:"2026-07-21",dataSourceDate:"2025-09-10",authorSlug:"m-arslan",primaryCategory:"nutrition-guides",
+    featuredImage:{src:"/blog/bibibop-menu-nutrition-facts.webp",alt:"Illustrated customizable bowl beside nutrition metric cards",width:1200,height:675},
+    inlineImages:[
+      {src:"/blog/bibibop-menu-nutrition-reading-guide.svg",alt:"Diagram showing serving size, calories, macros, sodium, and allergens as separate checks",width:1000,height:600,caption:"Read the serving basis first; each nutrition column answers a different question."},
+      {src:"/blog/bibibop-bowl-nutrition-equation.svg",alt:"Diagram showing a base, protein, toppings, and sauce combining into one bowl total",width:1000,height:600,caption:"A bowl total is the sum of the portions selected from one source edition."},
+    ],
+    relatedSlugs:["how-to-build-a-low-calorie-bibibop-bowl","bibibop-calories-and-nutrition-guide","calories-vs-macros-restaurant-bowl"],
+    toc:[{id:"quick-answer",label:"Quick answer",level:2},{id:"serving",label:"Start with the serving",level:2},{id:"columns",label:"Nutrition columns",level:2},{id:"calculate",label:"Calculate a custom bowl",level:2},{id:"example",label:"Worked example",level:2},{id:"daily-value",label:"Percent Daily Value",level:2},{id:"allergens",label:"Allergen facts",level:2},{id:"mistakes",label:"Common mistakes",level:2},{id:"compare",label:"Compare two bowls",level:2},{id:"faq",label:"FAQs",level:2}],
+    faq:[
+      {question:"Where can I find the full BIBIBOP menu nutrition facts chart?",answer:"Use the searchable BIBIBOP nutrition facts page for the complete table, then use the calculator to total a custom order."},
+      {question:"Does every BIBIBOP bowl have the same calories?",answer:"No. A bowl total depends on the selected size, base, protein, toppings, sauce, sides, and drinks."},
+      {question:"Why do BIBIBOP nutrition values change?",answer:"Supplier changes, substitutions, recipe revisions, source updates, and serving-size changes can alter published values. Hand preparation can also make an actual serving differ."},
+      {question:"Should I calculate calories from the macro grams?",answer:"Use the published calorie value for each serving. Rounding and fiber reporting can prevent macro arithmetic from matching the listed calories exactly."},
+      {question:"Are zero-calorie ingredients automatically allergen-free?",answer:"No. Nutrition values and allergen status answer different questions. Review the official allergen matrix separately."},
+      {question:"Can the nutrition facts guarantee the exact amount in my bowl?",answer:"No. They provide a standardized reference. Actual portions and preparation may vary by order and location."},
+    ],
+  },
+  {
+    id:"how-to-build-a-low-calorie-bibibop-bowl",slug:"how-to-build-a-low-calorie-bibibop-bowl",
+    title:"How to Build a Low-Calorie BIBIBOP Bowl",seoTitle:"How to Build a Low-Calorie BIBIBOP Bowl [Easy Swaps]",
+    metaDescription:"Build a lower-calorie BIBIBOP bowl by comparing bases, proteins, toppings and sauces. See practical examples, nutrition tradeoffs and ordering tips.",description:"A source-aware ordering guide to making practical lower-calorie BIBIBOP bowl swaps.",
+    excerpt:"Build a lower-calorie bowl with a deliberate base, protein, vegetable toppings, and sauce choice—without pretending one number defines the meal.",
+    publishedDate:"2026-07-21",updatedDate:"2026-07-21",dataSourceDate:"2025-09-10",authorSlug:"m-arslan",primaryCategory:"ordering-guides",
+    featuredImage:{src:"/blog/how-to-build-a-low-calorie-bibibop-bowl.svg",alt:"Illustrated lower-calorie customizable bowl with greens, lean protein, vegetables, and a measured sauce portion",width:1200,height:675},
+    inlineImages:[
+      {src:"/blog/low-calorie-bowl-building-steps.svg",alt:"Four-step diagram showing bowl size, greens base, protein, vegetables, and sauce choices",width:1000,height:600,caption:"The larger calorie levers are format, base, protein, and sauce; toppings add up too."},
+      {src:"/blog/low-calorie-bowl-swap-comparison.svg",alt:"Comparison graphic showing noodles versus greens and creamy sauce versus lighter sauce",width:1000,height:600,caption:"A meaningful swap can change more than calories, including texture, satisfaction, sodium, and allergens."},
+    ],
+    relatedSlugs:["bibibop-menu-nutrition-facts","bibibop-menu-first-time-ordering-guide","bibibop-proteins-compared"],
+    toc:[{id:"strategy",label:"The simplest strategy",level:2},{id:"levers",label:"Four calorie levers",level:2},{id:"size",label:"Choose bowl size",level:2},{id:"base",label:"Use the base",level:2},{id:"protein",label:"Compare protein",level:2},{id:"toppings",label:"Keep vegetables",level:2},{id:"sauce",label:"Treat sauce separately",level:2},{id:"examples",label:"Three examples",level:2},{id:"swaps",label:"Easy swaps",level:2},{id:"mistakes",label:"Common mistakes",level:2},{id:"formula",label:"Ordering formula",level:2},{id:"faq",label:"FAQs",level:2}],
+    faq:[
+      {question:"What is the lowest-calorie BIBIBOP base?",answer:"In the September 2025 nutrition sheet, Crispy Romaine has the lowest listed base calories at 45 per 2.5-ounce serving."},
+      {question:"Which BIBIBOP sauce has the fewest calories?",answer:"Spicy Sriracha is listed at 25 calories per 1-fluid-ounce serving in the September 2025 sheet. It still contains sodium and may not suit every heat preference."},
+      {question:"Can I build a BIBIBOP bowl under 300 calories?",answer:"Yes, some combinations using greens, a moderate-calorie protein, vegetable toppings, and a lower-calorie sauce total under 300 calories in the published dataset. Actual portions may vary."},
+      {question:"Is tofu the lowest-calorie BIBIBOP protein?",answer:"Tofu is listed at 150 calories in the September 2025 sheet, slightly below the 160-calorie Korean BBQ beef and Korean crispy chicken servings. Compare protein, sodium, allergens, and preferences too."},
+      {question:"Does a low-calorie BIBIBOP bowl also have low sodium?",answer:"Not necessarily. Marinated proteins, seasoned toppings, and sauces can create a high sodium total even when calories are modest."},
+      {question:"Should I skip sauce completely?",answer:"Not unless you prefer the bowl that way. Sauce on the side lets you control the amount while keeping the flavor you want."},
+    ],
+  },
+  {
     id:"bibibop-calories-nutrition-guide",slug:"bibibop-calories-and-nutrition-guide/".slice(0,-1),
     title:"BIBIBOP Calories and Nutrition Guide",seoTitle:"BIBIBOP Calories and Nutrition Guide (2026)",
     metaDescription:"Understand BIBIBOP calories, macros, sodium, serving sizes, allergens, and custom bowl totals using current official nutrition information.",description:"A source-aware guide to BIBIBOP calories, macros, sodium, portions, and complete bowl totals.",

@@ -1,11 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const slugs=["bibibop-calories-and-nutrition-guide","bibibop-menu-first-time-ordering-guide","calories-vs-macros-restaurant-bowl","bibibop-proteins-compared","bibibop-vs-chipotle-nutrition-comparison"];
+const slugs=["bibibop-menu-nutrition-facts","how-to-build-a-low-calorie-bibibop-bowl","bibibop-calories-and-nutrition-guide","bibibop-menu-first-time-ordering-guide","calories-vs-macros-restaurant-bowl","bibibop-proteins-compared","bibibop-vs-chipotle-nutrition-comparison"];
 const expectedCategoryCounts={
-  "out/blog/index.html":5,
-  "out/blog/nutrition-guides/index.html":1,
-  "out/blog/ordering-guides/index.html":1,
+  "out/blog/index.html":7,
+  "out/blog/nutrition-guides/index.html":2,
+  "out/blog/ordering-guides/index.html":2,
   "out/blog/nutrition-education/index.html":1,
   "out/blog/comparisons/index.html":2,
   "out/blog/comparisons/meal-comparisons/index.html":1,
