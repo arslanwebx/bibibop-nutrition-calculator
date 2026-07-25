@@ -28,6 +28,27 @@ export const blogPostBySlug=(slug:string)=>blogPosts.find(post=>post.slug===slug
 
 export const blogPosts:BlogPostSummary[]=[
   {
+    id:"protein-per-calorie-explained-restaurant-bowl-examples",slug:"protein-per-calorie-explained-restaurant-bowl-examples",
+    title:"Protein per Calorie Explained With Restaurant Bowl Examples",seoTitle:"Protein per Calorie Explained: Restaurant Bowl Examples",
+    metaDescription:"Learn what protein per calorie means, calculate grams per 100 calories, and compare four illustrative restaurant bowls with practical examples.",description:"A practical guide to calculating and using protein per calorie when comparing customizable restaurant bowls.",
+    excerpt:"Learn how grams of protein per 100 calories can make restaurant bowl comparisons clearer—without treating one ratio as a complete nutrition score.",
+    publishedDate:"2026-07-25",updatedDate:"2026-07-25",dataSourceDate:"2026-07-25",authorSlug:"m-arslan",primaryCategory:"nutrition-education",
+    featuredImage:{src:"/blog/protein-per-calorie-restaurant-bowl.jpg",alt:"Chicken restaurant bowl beside calorie, protein, and protein-per-calorie values",width:1200,height:675},
+    inlineImages:[
+      {src:"/blog/restaurant-bowl-protein-comparison.jpg",alt:"Four illustrative chicken, steak, tofu, and salmon bowls compared by calories, protein, and protein per 100 calories",width:1200,height:900,caption:"Illustrative examples only—not official menu items. Protein density is calculated from each example's stated calories and protein."},
+      {src:"/blog/restaurant-bowl-protein-density-chart.jpg",alt:"Bar chart comparing protein grams per 100 calories across four illustrative restaurant bowls",width:1360,height:816,caption:"The chicken veggie example has the highest protein density; the ratio does not measure overall meal quality or suitability."},
+    ],
+    relatedSlugs:["calories-vs-macros-restaurant-bowl","bibibop-proteins-compared","how-to-build-a-low-calorie-bibibop-bowl"],
+    toc:[{id:"meaning",label:"What protein per calorie means",level:2},{id:"calculate",label:"How to calculate it",level:2},{id:"why-it-matters",label:"Why it matters for bowls",level:2},{id:"rule-of-thumb",label:"A practical range",level:2},{id:"examples",label:"Restaurant bowl examples",level:2},{id:"improve",label:"Improve the ratio",level:2},{id:"mistakes",label:"Common mistakes",level:2},{id:"limits",label:"What the ratio misses",level:2},{id:"bibibop",label:"Apply it at BIBIBOP",level:2},{id:"faq",label:"FAQs",level:2}],
+    faq:[
+      {question:"What is a good protein per calorie ratio for a restaurant bowl?",answer:"There is no universal cutoff. As a practical comparison guide, 5 to 8 grams of protein per 100 calories is a useful middle-to-high range, while 8 grams or more is very protein-dense. Your needs and the rest of the meal still matter."},
+      {question:"Is the bowl with the most protein always the best choice?",answer:"No. A bowl can have the most protein and still carry many more calories, and protein density does not account for fiber, sodium, allergens, fats, portion size, or personal preferences."},
+      {question:"Can a vegetarian bowl have a good protein per calorie ratio?",answer:"Yes. Tofu, edamame, beans, lentils, and other plant proteins can produce a useful ratio, especially when paired with vegetables and moderate portions of calorie-dense sauces."},
+      {question:"Why do sauces change the ratio so much?",answer:"Many sauces add calories while contributing little protein. The effect depends on the sauce and portion, so include the sauce when calculating the complete bowl."},
+      {question:"Should I compare calories, macros, or both?",answer:"Use both. Calories describe listed energy, while protein, carbohydrate, and fat describe much of the meal's composition. Protein per calorie is one comparison tool within that broader review."},
+    ],
+  },
+  {
     id:"bibibop-menu-nutrition-facts",slug:"bibibop-menu-nutrition-facts",
     title:"How to Read BIBIBOP Menu Nutrition Facts",seoTitle:"BIBIBOP Menu Nutrition Facts [Calories, Macros & Serving Sizes]",
     metaDescription:"Learn how to read BIBIBOP menu nutrition facts, compare serving sizes, total a custom bowl, and interpret calories, macros, sodium and allergens.",description:"An explanatory guide to serving sizes, menu nutrition columns, and itemized BIBIBOP bowl totals.",

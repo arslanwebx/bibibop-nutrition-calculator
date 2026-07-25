@@ -6,9 +6,11 @@ import ProteinsCompared from "@/components/content/articles/ProteinsCompared";
 import BibibopVsChipotle from "@/components/content/articles/BibibopVsChipotle";
 import MenuNutritionFacts from "@/components/content/articles/MenuNutritionFacts";
 import LowCalorieBowl from "@/components/content/articles/LowCalorieBowl";
+import ProteinPerCalorie from "@/components/content/articles/ProteinPerCalorie";
 
 export default function BlogArticleContent({post}:{post:BlogPostSummary}){
   const components:Record<string,React.ReactNode>={
+    "protein-per-calorie-explained-restaurant-bowl-examples":<ProteinPerCalorie post={post}/>,
     "bibibop-menu-nutrition-facts":<MenuNutritionFacts post={post}/>,
     "how-to-build-a-low-calorie-bibibop-bowl":<LowCalorieBowl post={post}/>,
     "bibibop-calories-and-nutrition-guide":<CaloriesNutritionGuide post={post}/>,
