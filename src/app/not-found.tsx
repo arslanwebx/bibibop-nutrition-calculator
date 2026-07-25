@@ -1,2 +1,4 @@
+import type {Metadata} from "next";
 import Link from "next/link";
+export const metadata:Metadata={title:"Page Not Found",description:"The requested page could not be found.",robots:{index:false,follow:false},alternates:{canonical:null},openGraph:null,twitter:null};
 export default function NotFound(){return <div className="content-page"><div className="shell article-card empty-state"><svg viewBox="0 0 240 160" aria-hidden="true"><path d="M35 72h170c-10 53-39 76-85 76S45 125 35 72Z" fill="#fff1e6" stroke="#f97316" strokeWidth="5"/><path d="M72 52h96" stroke="#3f7d5a" strokeWidth="8" strokeLinecap="round"/><text x="120" y="43" textAnchor="middle" fontSize="30" fontWeight="800" fill="#172033">404</text></svg><h1>Page not found</h1><p>The address may be outdated or mistyped. The calculator and complete nutrition table are still available.</p><Link className="button" href="/">Return to the calculator</Link></div></div>}

@@ -5,6 +5,7 @@ export const siteConfig = {
   email: "contact@bibibopnutritioncalculator.pro",
   description: "Build your BIBIBOP bowl and calculate calories, protein, carbs, fat, sodium and allergens using official nutrition data for every ingredient.",
   title: "BIBIBOP Nutrition Calculator [Calories, Macros & Allergens]",
+  contentUpdatedDate: "2026-07-25",
   source: {
     pdfUrl: "https://bibibop.com/wp-content/uploads/2025/09/BIBIBOP-Nutrition-Updated-9.10.25.pdf",
     pageUrl: "https://bibibop.com/nutrition/",

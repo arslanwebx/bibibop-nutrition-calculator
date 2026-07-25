@@ -2,6 +2,7 @@ import type {Metadata} from "next";
 import Link from "next/link";
 import PageShell from "@/components/content/PageShell";
 import {allHumanRoutes} from "@/config/site";
+import {blogArticleHref,blogPosts} from "@/data/blog-posts";
 
 export const metadata:Metadata={title:"Sitemap",description:"A human-readable directory of every public page on this website.",alternates:{canonical:"/sitemap/"}};
 const names:Record<string,string>={
@@ -27,4 +28,4 @@ const names:Record<string,string>={
   "/about/":"About","/contact/":"Contact","/editorial-policy/":"Editorial Policy","/corrections-policy/":"Corrections Policy","/privacy-policy/":"Privacy Policy","/cookie-policy/":"Cookie Policy","/terms/":"Terms Of Use","/medical-disclaimer/":"Medical Disclaimer","/trademark-disclaimer/":"Trademark Disclaimer","/advertising-disclosure/":"Advertising Disclosure","/accessibility/":"Accessibility","/author/m-arslan/":"M. Arsalan - Author","/sitemap/":"Sitemap",
 };
 
-export default function Page(){return <PageShell title="Sitemap" description="Browse calculators, nutrition guides, source documentation, contact options, and site policies."><ul>{allHumanRoutes.map(route=><li key={route}><Link href={route}>{names[route]}</Link></li>)}</ul></PageShell>}
+export default function Page(){return <PageShell title="Sitemap" description="Browse calculators, nutrition guides, source documentation, contact options, and site policies."><h2>Pages and calculators</h2><ul>{allHumanRoutes.map(route=><li key={route}><Link href={route}>{names[route]}</Link></li>)}</ul><h2>Nutrition articles</h2><ul>{blogPosts.map(post=><li key={post.id}><Link href={blogArticleHref(post.slug)}>{post.title}</Link></li>)}</ul></PageShell>}

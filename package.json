@@ -14,6 +14,7 @@
     "test:e2e": "playwright test",
     "verify:data": "node --experimental-strip-types scripts/verify-data.ts",
     "verify:blog": "node scripts/verify-blog-output.mjs",
+    "verify:seo": "node scripts/verify-home-seo.mjs",
     "preview": "npx wrangler pages dev out"
   },
   "dependencies": {
